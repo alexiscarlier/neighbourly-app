@@ -5,10 +5,12 @@ class FeedContainer extends Component {
   render () {
     return (
       <div>
-        {this.props.feeds.map(function(feed) {
-        return <Feed name={feed.name} />
-        })
+        { (() => {
+          if (this.props.feeds.length !== 0) {
+          return <Feed name={this.props.feeds[this.props.feeds.length -1].name } />
         }
+      })()
+      }
       </div>
     )
   }

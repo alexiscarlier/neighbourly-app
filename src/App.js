@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       feeds:
-      [{name: 'initial user name'}]
+      []
     };
   }
   addFeed(userName) {
