@@ -13,6 +13,7 @@ class Signup extends Component {
     this.setState({
       userName: ""
     });
+    this.props.addFeed(userName);
     e.preventDefault();
   }
   onChange(e) {
