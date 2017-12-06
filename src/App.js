@@ -30,7 +30,7 @@ class App extends Component {
 
   onAddFeed(feed) {
     let{feeds} = this.state;
-    feeds.push(feed);
+    feeds[0] = feed;
     this.setState({feeds});
   }
 

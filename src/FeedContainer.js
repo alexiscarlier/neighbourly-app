@@ -7,8 +7,7 @@ class FeedContainer extends Component {
       <div>
         { (() => {
           if (this.props.feeds.length !== 0) {
-            console.log(this.props.feeds)
-          return <Feed name={this.props.feeds[this.props.feeds.length -1].name } />
+          return <Feed name={this.props.feeds[0].name } />
         }
       })()
       }
