@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 
 class Signup extends Component {
-  onClick(){
+  onSubmit(){
     console.log('I was clicked')
   }
 
   render() {
     return (
       <div>
-      <form>
+      <form onSubmit={this.onSubmit.bind(this)}>
         Please enter your name:
         <input type="text">
         </input>
+        <input type="submit" value="Submit">
+        </input>
       </form>
-      <h2 onClick={this.onClick.bind(this)}>Submit</h2>
       </div>
     );
   }
