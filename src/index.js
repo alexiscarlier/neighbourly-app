@@ -8,5 +8,5 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<Signup />, document.getElementById('sign-up'));
-ReactDOM.render(<Feed />, document.getElementById('feed'));
+ReactDOM.render(<Feed name="David Halewood"/>, document.getElementById('feed'));
 registerServiceWorker();
