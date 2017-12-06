@@ -9,6 +9,7 @@ class Signup extends Component {
 
   onSubmit(e){
     let {userName} = this.state;
+    console.log(userName);
     this.setState({
       userName: ""
     });

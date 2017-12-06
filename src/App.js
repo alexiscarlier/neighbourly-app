@@ -2,22 +2,42 @@ import React, { Component } from 'react';
 import './App.css';
 import Signup from './Signup';
 import FeedContainer from './FeedContainer';
+import Socket from './socket.js'
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      feeds:
-      []
+      feeds: [],
+      connected: false
     };
   }
-  addFeed(userName) {
-    let {feeds} = this.state;
-    feeds.push({name: userName});
-    this.setState({
-      feeds: feeds
-    })
+
+  componentDidMount(){
+    let socket = this.socket = new Socket();
+    socket.on('connect', this.onConnect.bind(this));
+    socket.on('disconnect', this.onDisconnect.bind(this));
+    socket.on('feed add', this.onAddFeed.bind(this))
   }
+
+  onConnect() {
+    this.setState({connected: true});
+  }
+  onDisconnect() {
+    this.setState({})
+  }
+
+  onAddFeed(feed) {
+    let{feeds} = this.state;
+    feeds.push(feed);
+    this.setState({feeds});
+  }
+
+  addFeed(name) {
+    this.socket.emit('feed add', {name});
+  }
+
   render() {
     return (
       <div className="App">
@@ -27,7 +47,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;
