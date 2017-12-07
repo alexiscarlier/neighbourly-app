@@ -6,12 +6,12 @@ import Feed from '../src/Feed'
 describe("<Feed />", () => {
     test("it renders welcome message", () => {
         const renderer = new ShallowRenderer();
-        renderer.render(<Feed name="Alfonso"/>);
+        renderer.render(<Feed address="Makers Academy"/>);
         const result = renderer.getRenderOutput();
 
         expect(result.type).toBe('div');
         expect(result.props.children).toEqual([
-           "Welcome, ",  "Alfonso",  "! Your feed..."
+           "Welcome, ",  "Makers Academy",  "! Your feed..."
         ])
     })
 })
