@@ -34,8 +34,8 @@ class App extends Component {
     this.setState({feeds});
   }
 
-  addFeed(name) {
-    this.socket.emit('feed add', {name});
+  addFeed(address) {
+    this.socket.emit('feed add', {address});
   }
 
   render() {

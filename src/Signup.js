@@ -8,16 +8,16 @@ class Signup extends Component {
   }
 
   onSubmit(e){
-    let {userName} = this.state;
+    let {address} = this.state;
     this.setState({
-      userName: ""
+      address: ""
     });
-    this.props.addFeed(userName);
+    this.props.addFeed(address);
     e.preventDefault();
   }
   onChange(e) {
       this.setState({
-        userName: e.target.value
+        address: e.target.value
       });
   }
 
@@ -25,8 +25,8 @@ class Signup extends Component {
     return (
       <div>
       <form onSubmit={this.onSubmit.bind(this)}>
-        Please enter your name:
-        <input type="text" onChange={this.onChange.bind(this)} value={this.state.userName}>
+        Please enter your address:
+        <input type="text" onChange={this.onChange.bind(this)} value={this.state.address}>
         </input>
         <input type="submit" value="Submit">
         </input>
