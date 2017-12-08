@@ -8,7 +8,6 @@ describe("<Feed />", () => {
         const renderer = new ShallowRenderer();
         renderer.render(<Feed address="Makers Academy"/>);
         const result = renderer.getRenderOutput();
-
         expect(result.type).toBe('div');
         expect(result.props.children).toEqual([
            "Welcome, ",  "Makers Academy",  "! Your feed..."
