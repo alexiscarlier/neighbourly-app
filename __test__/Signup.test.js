@@ -7,7 +7,13 @@ describe("<Signup />", () => {
       const renderer = new ShallowRenderer();
       renderer.render(<Signup />);
       const result = renderer.getRenderOutput();
-      console.log(result)
       expect(result.props.children.type).toBe('form')
   })
+  test("form contains ", () => {
+    const renderer = new ShallowRenderer();
+    renderer.render(<Signup />);
+    const render = renderer.getRenderOutput();
+    const result = render.props.children.props["children"][0]
+    expect(result).toContain('Please enter your address')
+})
 })
