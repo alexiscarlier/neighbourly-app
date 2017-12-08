@@ -36,6 +36,7 @@ class App extends Component {
 
   addFeed(address) {
     this.socket.emit('feed add', {address});
+    this.socket.emit('feed subscribe')
   }
 
   render() {
