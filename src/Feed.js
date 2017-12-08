@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Feed extends Component {
   render () {
     return (
-      <div>Welcome, {this.props.name}! Your feed...</div>
+      <div>Welcome, {this.props.address}! Your feed...</div>
     );
   }
 }
