@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import Feed from '../src/Feed'
 
-
 describe("<Feed />", () => {
     test("it renders welcome message", () => {
         const renderer = new ShallowRenderer();
