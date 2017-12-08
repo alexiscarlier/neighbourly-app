@@ -15,5 +15,5 @@ describe("<Signup />", () => {
     const render = renderer.getRenderOutput();
     const result = render.props.children.props["children"][0]
     expect(result).toContain('Please enter your address')
-})
+  })
 })
