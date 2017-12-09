@@ -23,4 +23,11 @@ describe("Socket", () => {
       mockServer.stop(done);
     }, 100);
   });
+  describe("#on", () => {
+    test("calls event handler with correct message", () => {
+      testSocket.on("message", "handler");
+      expect(eeMock.on.mock.calls[0][0]).toBe('message');
+      expect(eeMock.on.mock.calls[0][1]).toBe('handler');
+    });
+  });
 });
