@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Signup from './Signup';
 import FeedContainer from './FeedContainer';
 import Socket from './socket.js'

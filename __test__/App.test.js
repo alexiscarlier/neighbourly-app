@@ -7,6 +7,9 @@ describe("<App />", () => {
       const renderer = new ShallowRenderer();
       renderer.render(<App />);
       const result = renderer.getRenderOutput();
-      expect(result.type).toBe('div')
+      expect(result.type).toBe('div');
+      expect(result.props.children).toEqual([
+         "Welcome to the feed for...",  "Makers Academy"
+      ])
   })
 })
