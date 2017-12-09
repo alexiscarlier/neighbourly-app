@@ -36,4 +36,11 @@ describe("Socket", () => {
       expect(eeMock.on.mock.calls[0][1]).toBe('handler');
     });
   });
+  describe("#off", () => {
+    test("calls event handler with correct message", () => {
+      testSocket.off("message", "handler");
+      expect(eeMock.removeListener.mock.calls[0][0]).toBe('message');
+      expect(eeMock.removeListener.mock.calls[0][1]).toBe('handler');
+    });
+  });
 });
