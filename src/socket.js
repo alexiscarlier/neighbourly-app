@@ -10,7 +10,6 @@ class Socket {
   }
 
   message(e){
-    console.log("Third?")
     try {
       const message = JSON.parse(e.data);
       this.ee.emit(message.name, message.data);
@@ -30,7 +29,6 @@ class Socket {
     this.ws.send(message);
   }
   open(e){
-    console.log("first?")
     this.ee.emit('connect');
   }
   close(e){
