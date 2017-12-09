@@ -9,6 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      activeFeed: null,
       feeds: [],
       connected: false
     };
@@ -30,13 +31,15 @@ class App extends Component {
 
   onAddFeed(feed) {
     let{feeds} = this.state;
-    feeds[0] = feed;
+    if (feed.address === this.state.activeFeed) {
+      feeds[0] = feed;
+    }
     this.setState({feeds});
   }
 
   addFeed(address) {
+    this.setState({activeFeed: address});
     this.socket.emit('feed add', {address});
-    this.socket.emit('feed subscribe')
   }
 
   render() {
