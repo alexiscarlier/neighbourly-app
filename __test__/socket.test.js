@@ -21,6 +21,6 @@ describe("Socket", () => {
       expect(eeMock.emit.mock.calls[1][0]).toBe('message name')
       expect(eeMock.emit.mock.calls[1][1]).toBe('message data')
       mockServer.stop(done);
-    }, 200);
+    }, 100);
   });
 });
