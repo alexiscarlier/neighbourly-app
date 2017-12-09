@@ -24,18 +24,10 @@ describe("Socket", () => {
     });
   })
   describe("#message", () => {
-    test("#open and #message", (done) => {
-        mockServer.on('connection', server => {
-        mockServer.send(JSON.stringify({name: "message name", data: "message data"}));
-      })
-
-      setTimeout(() => {
-        expect(eeMock.emit.mock.calls[0][0]).toBe('connect')
-        expect(eeMock.emit.mock.calls[1][0]).toBe('message name')
-        expect(eeMock.emit.mock.calls[1][1]).toBe('message data')
-        mockServer.stop(done);
-      }, 100);
-    });
+    test("emits message name and data payload", () => {
+      expect(eeMock.emit.mock.calls[1][0]).toBe('message name')
+      expect(eeMock.emit.mock.calls[1][1]).toBe('message data')
+    })
   })
   describe("#on", () => {
     test("calls event handler with correct message", () => {
