@@ -8,10 +8,10 @@ const eeMock = {
 };
 
 const mockServer = new Server("ws://localhost:4000");
+const testSocket = new Socket(new WebSocket("ws://localhost:4000"), eeMock);
 
 describe("Socket", () => {
   test("#open and #message", (done) => {
-    const testSocket = new Socket(new WebSocket("ws://localhost:4000"), eeMock);
     mockServer.on('connection', server => {
       mockServer.send(JSON.stringify({name: "message name", data: "message data"}));
     })
