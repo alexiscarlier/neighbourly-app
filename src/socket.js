@@ -9,10 +9,6 @@ class Socket {
     ws.close = this.close.bind(this);
   }
 
-  test() {
-    return this.ee.emit("works");
-  }
-
   message(e){
     try {
       const message = JSON.parse(e.data);
