@@ -43,4 +43,11 @@ describe("Socket", () => {
       expect(eeMock.removeListener.mock.calls[0][1]).toBe('handler');
     });
   });
+  describe("#emit", () => {
+    test("emits message from client to WebSocket", () => {
+      testSocket.ws.send = jest.fn();
+      testSocket.emit("message", {data: "data"});
+      expect(testSocket.ws.send.mock.calls[0][0]).toBe('{"name":"message","data":{"data":"data"}}');
+    });
+  });
 });
