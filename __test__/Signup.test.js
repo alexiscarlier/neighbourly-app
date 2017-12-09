@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import Signup from '../src/Signup';
 import TestUtils from 'react-dom/test-utils';
-import ReactDOM from 'react-dom';
 
 describe("<Signup />", () => {
   test("renders a form for user to sign up", () => {
