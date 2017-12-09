@@ -19,6 +19,7 @@ class Socket {
     }
   }
   on(name, fn) {
+    console.log("called?");
     this.ee.on(name, fn);
   }
   off(name, fn) {

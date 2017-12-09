@@ -10,8 +10,8 @@ const eeMockWithJests = {
 const mockServer = new Server("ws://localhost:4000");
 
 describe("Socket", () => {
+  const testSocket = new Socket(new WebSocket("ws://localhost:4000"), eeMockWithJests);
   test("#open and #message", (done) => {
-    const testSocket = new Socket(new WebSocket("ws://localhost:4000"), eeMockWithJests);
     mockServer.on('connection', server => {
       mockServer.send(JSON.stringify({name: "message name", data: "message data"}));
     })
@@ -21,6 +21,6 @@ describe("Socket", () => {
       expect(eeMockWithJests.emit.mock.calls[1][0]).toBe('message name')
       expect(eeMockWithJests.emit.mock.calls[1][1]).toBe('message data')
       mockServer.stop(done);
-    }, 200);
+    }, 100);
   });
 });
