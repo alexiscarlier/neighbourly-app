@@ -1,5 +1,7 @@
 import Socket from '../src/socket.js';
 import { Server } from 'mock-socket';
+import { WebSocket as MockWebSocket } from 'mock-socket';
+
 
 const eeMock = {
   emit: jest.fn(),
@@ -23,6 +25,14 @@ describe("Socket", () => {
       }, 100);
     });
   });
+  test("#close", (done) => {
+    testSocket.ws.close();
+    setTimeout(() => {
+      expect(eeMock.emit.mock.calls[2][0]).toBe('disconnect');
+      mockServer.stop(done);
+    }, 1000);
+  });
+
   describe("#message", () => {
     test("emits message name and data payload", () => {
       expect(eeMock.emit.mock.calls[1][0]).toBe('message name');
