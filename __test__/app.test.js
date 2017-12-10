@@ -78,9 +78,22 @@ describe("<App />", () => {
         password: '12345'
       }
       const feed = { defaultFeed: "12345"}
-      wrapper.instance().userSignUp(user);
       wrapper.instance().postSubscribe(feed);
       expect(wrapper.state("activeFeed")).toEqual("12345")
+    });
+  });
+  describe("#userSignUp", () => {
+    test("triggers an event emitter", () => {
+      const spy = jest.spyOn(Socket.prototype, 'emit')
+      const user = {
+        postcode: '12345',
+        username: 'david',
+        email: 'david@email.com',
+        password: '12345'
+      }
+      wrapper.instance().userSignUp(user);
+      expect(spy).toHaveBeenCalled();
+      wrapper.instance().onDisconnect();
     });
   });
 });
