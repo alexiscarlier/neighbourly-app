@@ -3,6 +3,7 @@ import App from '../src/App'
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { WebSocket } from 'mock-socket';
 global.WebSocket = WebSocket;
+import Socket from '../src/socket.js';
 
 
 
@@ -11,6 +12,7 @@ const activeFeed = null;
 const renderer = new ShallowRenderer();
 renderer.render(<App connected={connected} activeFeed={activeFeed}/>);
 const result = renderer.getRenderOutput();
+const wrapper = mount(<App />);
 
 describe("<App />", () => {
   describe("#render", () => {
@@ -20,10 +22,14 @@ describe("<App />", () => {
   })
   describe("#onConnect", () => {
     test("sets connected state to true", () => {
-      const wrapper = mount(<App />);
       expect(wrapper.state("connected")).toBe(false);      
       wrapper.instance().onConnect();
       expect(wrapper.state("connected")).toBe(true);
+    })
+    test("calls #emit", () => {
+      const spy = jest.spyOn(Socket.prototype, 'emit');
+      wrapper.instance().onConnect();
+      expect(spy).toHaveBeenCalled();      
     })
   })
 })
