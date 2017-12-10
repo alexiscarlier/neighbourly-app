@@ -56,6 +56,14 @@ describe("<App />", () => {
       expect(spy).toHaveBeenCalled();     
       wrapper.instance().onDisconnect();            
     })
-      
+  })
+  describe("#onAddFeed", () => {
+    test("adds activeFeed to feeds", () => {
+      const address = "Makers Academy";
+      const feed = { address: address}
+      wrapper.instance().addFeed(address);      
+      wrapper.instance().onAddFeed(feed);
+      expect(wrapper.state("feeds")).toContain(feed)
+    })
   })
 })
