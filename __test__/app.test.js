@@ -28,7 +28,7 @@ describe("<App />", () => {
     test("calls #emit", () => {
       const spy = jest.spyOn(Socket.prototype, 'emit');
       wrapper.instance().onConnect();
-      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith('feed subscribe');
       wrapper.instance().onDisconnect();
     });
   });
