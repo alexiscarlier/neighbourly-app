@@ -42,8 +42,8 @@ describe("<App />", () => {
     });
   });
   describe("#addFeed", () => {
+    const address = "Makers Academy";
     test("sets activeFeed to address passed in", () => {
-      const address = "Makers Academy";
       expect(wrapper.state("activeFeed")).toBe(null);
       wrapper.instance().addFeed(address);
       expect(wrapper.state("activeFeed")).toBe(address);
@@ -51,7 +51,7 @@ describe("<App />", () => {
     test("calls #emit", () => {
       const spy = jest.spyOn(Socket.prototype, 'emit');
       wrapper.instance().addFeed();
-      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith('feed add', {address});
       wrapper.instance().onDisconnect();
     });
   });
