@@ -61,25 +61,57 @@ Database
 ## File Manifest
 
 ```
-|-- neighbourly
+|-- neighbourly-app
+    |-- .babelrc
+    |-- .gitignore
     |-- README.md
-    |-- integration.md
-    |-- main.go
-    |-- app
-    |   |-- client.go
-    |   |-- handlers.go
-    |   |-- messages.go
-    |   |-- router.go
+    |-- package-lock.json
+    |-- package.json
+    |-- yarn.lock
+    |-- __mocks__
+    |   |-- react.js
+    |-- __test__
+    |   |-- FeedContainer.test.js
+    |   |-- Signup.test.js
+    |   |-- feed.test.js
+    |   |-- socket.test.js
+    |-- coverage
+    |   |-- clover.xml
+    |   |-- coverage-final.json
+    |   |-- lcov.info
+    |   |-- lcov-report
+    |       |-- base.css
+    |       |-- index.html
+    |       |-- prettify.css
+    |       |-- prettify.js
+    |       |-- sort-arrow-sprite.png
+    |       |-- sorter.js
+    |       |-- src
+    |       |   |-- Feed.js.html
+    |       |   |-- FeedContainer.js.html
+    |       |   |-- Signup.js.html
+    |       |   |-- index.html
+    |       |   |-- socket.js.html
+    |       |-- test
+    |           |-- index.html
+    |           |-- jestsetup.js.html
+    |-- public
+    |   |-- NeighbourlyLogoSquare.png
+    |   |-- index.html
+    |   |-- manifest.json
+    |-- src
+    |   |-- App.css
+    |   |-- App.js
+    |   |-- Feed.js
+    |   |-- FeedContainer.js
+    |   |-- Signup.js
+    |   |-- index.css
+    |   |-- index.js
+    |   |-- logo.svg
+    |   |-- registerServiceWorker.js
+    |   |-- socket.js
     |-- test
-        |-- LoginUser_test.go
-        |-- addFeed_test.go
-        |-- addPost_test.go
-        |-- signUpUser_test.go
-        |-- subscribeFeed_test.go
-        |-- subscribePost_test.go
-        |-- rethinkdb_data
-            |-- log_file
-            |-- metadata
+        |-- jestsetup.js
 ```
 
 
