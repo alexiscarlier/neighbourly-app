@@ -28,7 +28,10 @@ class App extends Component {
     this.socket.emit('feed subscribe')
   }
   onDisconnect() {
-    this.setState({})
+    this.setState({
+      activeFeed: null,
+      feeds: [],
+      connected: false})
   }
 
   onAddFeed(feed) {
