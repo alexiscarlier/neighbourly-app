@@ -17,15 +17,24 @@ describe("<Signup />", () => {
     const result = render.props.children.props["children"][0];
     expect(result).toContain('Please enter your address');
   });
-  it('should be called when submitting the form', () => {
-    const onSubmit = jest.fn();
-    const wrapper = mount(<Signup  onSubmit={onSubmit} /> );
-    const form = wrapper.find('form');
-    expect(onSubmit.called).toBeTruthy;
+  test('should not be call onSubmit when submitting empty form', () => {
+  const onSubmit = jest.fn();
+  const wrapper = shallow(<Signup onSubmit={onSubmit}/>);
+  const result = wrapper.find('input').last();
+  result.simulate('submit')
+  expect(onSubmit).not.toHaveBeenCalled()
   });
-  test("is called upon changing the text field", () => {
-    const onChange = jest.fn();
-    const input = TestUtils.renderIntoDocument(<Signup onChange={onChange}/>);
-    expect(onChange.called).toBeTruthy;
-  });
+  test('#onChange', () => {
+    const wrapper = mount(<Signup/> );
+    wrapper.find('#postcode').get(0).props.onChange({target: {name: "postcode", value: "12345"}})
+    expect(wrapper.state().postcode).toBe('12345');
+  })
+  test('#onSubmit', () => {
+    const userSignUp = jest.fn()
+    const wrapper = shallow(<Signup userSignUp={userSignUp}/> );
+    const preventDefault = jest.fn()
+    wrapper.find('form').first().simulate('submit', {preventDefault})
+    expect(preventDefault).toHaveBeenCalled();
+    expect(userSignUp).toHaveBeenCalled();
+  })
 });
