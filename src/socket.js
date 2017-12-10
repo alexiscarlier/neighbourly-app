@@ -1,4 +1,4 @@
-import {EventEmitter} from 'events';
+import { EventEmitter } from 'events';
 
 class Socket {
   constructor(ws = new WebSocket("ws://localhost:4000"), ee = new EventEmitter()){
@@ -8,7 +8,6 @@ class Socket {
     ws.onopen = this.open.bind(this);
     ws.close = this.close.bind(this);
   }
-
   message(e){
     try {
       const message = JSON.parse(e.data);
@@ -34,6 +33,6 @@ class Socket {
   close(e){
     this.ee.emit('disconnect');
   }
-}
+};
 
 export default Socket;

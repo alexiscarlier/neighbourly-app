@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import FeedContainer from '../src/FeedContainer'
-import Feed from '../src/Feed'
+import FeedContainer from '../src/FeedContainer';
+import Feed from '../src/Feed';
 
 
 describe("<FeedContainer />", () => {
@@ -12,5 +12,5 @@ describe("<FeedContainer />", () => {
         const result = renderer.getRenderOutput();
         expect(result.type).toBe('div');
         expect(result.props.children).toEqual(<Feed postcode="Makers Academy" />)
-    })
-})
+    });
+});

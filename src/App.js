@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Signup from './Signup';
 import FeedContainer from './FeedContainer';
-import Socket from './socket.js'
+import Socket from './socket.js';
 
 class App extends Component {
 
@@ -14,47 +14,40 @@ class App extends Component {
       connected: false,
     };
   }
-
   componentDidMount(){
     let socket = this.socket = new Socket();
     socket.on('connect', this.onConnect.bind(this));
     socket.on('disconnect', this.onDisconnect.bind(this));
-    socket.on('feed add', this.onAddFeed.bind(this))
-    socket.on('user created, logged in', this.postSubscribe.bind(this))
+    socket.on('feed add', this.onAddFeed.bind(this));
+    socket.on('user created, logged in', this.postSubscribe.bind(this));
   }
-
   onConnect() {
     this.setState({connected: true});
-    this.socket.emit('feed subscribe')
+    this.socket.emit('feed subscribe');
   }
   onDisconnect() {
     this.setState({
       activeFeed: null,
       feeds: [],
-      connected: false})
+      connected: false});
   }
-
   onAddFeed(feed) {
     let{feeds} = this.state;
-    feeds.push(feed)
+    feeds.push(feed);
     this.setState({feeds});
   }
-
   addFeed(address) {
     this.setState({activeFeed: address});
     this.socket.emit('feed add', {address});
   }
-
-  postSubscribe(feed) { 
-    const feedId = feed.defaultFeed
-    this.setState({activeFeed: feed.defaultFeed})
-    this.socket.emit('post subscribe', {feedId} )
+  postSubscribe(feed) {
+    const feedId = feed.defaultFeed;
+    this.setState({activeFeed: feed.defaultFeed});
+    this.socket.emit('post subscribe', {feedId} );
   }
-
   userSignUp(user) {
     this.socket.emit('user signup', user);
   }
-
   render() {
     return (
       <div className="App">
@@ -63,6 +56,6 @@ class App extends Component {
       </div>
     );
   }
-}
+};
 
 export default App;
