@@ -29,11 +29,9 @@ class Socket {
     this.ws.send(message);
   }
   open(e){
-    console.log("i am the walrus")
     this.ee.emit('connect');
   }
   close(e){
-    console.log('close?');
     this.ee.emit('disconnect');
   }
 }
