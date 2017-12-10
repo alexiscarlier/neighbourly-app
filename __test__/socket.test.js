@@ -36,6 +36,10 @@ describe("Socket", () => {
       expect(eeMock.emit.mock.calls[1][0]).toBe('message name');
       expect(eeMock.emit.mock.calls[1][1]).toBe('message data');
     });
+    test("catches error when parsing invalid response message", () => {
+      testSocket.message("bad response");
+      expect(eeMock.emit.mock.calls[3][0]).toBe('error');
+    })
   });
   describe("#on", () => {
     test("calls event handler with correct message", () => {
