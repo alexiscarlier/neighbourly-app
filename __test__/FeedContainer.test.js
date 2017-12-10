@@ -11,6 +11,6 @@ describe("<FeedContainer />", () => {
         renderer.render(<FeedContainer feeds={feeds}/>);
         const result = renderer.getRenderOutput();
         expect(result.type).toBe('div');
-        expect(result.props.children).toEqual(<Feed address="Makers Academy" />)
+        expect(result.props.children).toEqual(<Feed postcode="Makers Academy" />)
     })
 })
