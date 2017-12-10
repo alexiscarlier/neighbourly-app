@@ -24,17 +24,21 @@ describe("<Signup />", () => {
   result.simulate('submit')
   expect(onSubmit).not.toHaveBeenCalled()
   });
-  test('#onChange', () => {
-    const wrapper = mount(<Signup/> );
-    wrapper.find('#postcode').get(0).props.onChange({target: {name: "postcode", value: "12345"}})
-    expect(wrapper.state().postcode).toBe('12345');
-  })
-  test('#onSubmit', () => {
-    const userSignUp = jest.fn()
-    const wrapper = shallow(<Signup userSignUp={userSignUp}/> );
-    const preventDefault = jest.fn()
-    wrapper.find('form').first().simulate('submit', {preventDefault})
-    expect(preventDefault).toHaveBeenCalled();
-    expect(userSignUp).toHaveBeenCalled();
-  })
+  describe('#onChange', () => {
+    test('updates state attributes', () => {
+      const wrapper = mount(<Signup/> );
+      wrapper.find('#postcode').get(0).props.onChange({target: {name: "postcode", value: "12345"}})
+      expect(wrapper.state().postcode).toBe('12345');
+    });
+  });
+  describe('#onSubmit', () => {
+    test('it prevents the page from reloading and calls userSignUp function', () => {
+      const userSignUp = jest.fn()
+      const wrapper = shallow(<Signup userSignUp={userSignUp}/> );
+      const preventDefault = jest.fn()
+      wrapper.find('form').first().simulate('submit', {preventDefault})
+      expect(preventDefault).toHaveBeenCalled();
+      expect(userSignUp).toHaveBeenCalled();
+    });
+  });
 });
