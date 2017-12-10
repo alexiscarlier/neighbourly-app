@@ -31,7 +31,7 @@ class Signup extends Component {
     return (
       <div>
       <form onSubmit={this.onSubmit.bind(this)}>
-        Please enter your address:
+        <h1>Sign-Up</h1>
         <input type="text" id="postcode" name="postcode" onChange={this.onChange.bind(this)} value={this.state.postcode} required placeholder="Post Code"/>
         <input type="text" id="username" name="username" onChange={this.onChange.bind(this)} value={this.state.username}required placeholder="Username"/>
         <input type="text" id="email" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required placeholder="Email"/>
