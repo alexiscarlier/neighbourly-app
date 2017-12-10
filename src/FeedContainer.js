@@ -6,10 +6,18 @@ class FeedContainer extends Component {
     return (
       <div>
         { (() => {
-          if (this.props.feeds.length !== 0) {
-          return <Feed address={this.props.feeds[0].address } />
-        }
-      })()
+          var activeFeed = this.props.activeFeed
+          var feeds = this.props.feeds
+          var feedList = []
+          feedList.push(feeds.filter ((el ) => {
+            return el["id"] === activeFeed
+          }))
+            var feed = feedList[0]
+            if (feed.length !== 0) {
+              var postcode = feed[0].address
+              return <Feed postcode={postcode} />
+            }
+        })()
       }
       </div>
     )
