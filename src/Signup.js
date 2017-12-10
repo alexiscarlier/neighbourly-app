@@ -37,7 +37,7 @@ class Signup extends Component {
         <input type="text" name="address" onChange={this.onChange.bind(this)} value={this.state.address} required placeholder="Post Code"/>
         <input type="text" name="username" onChange={this.onChange.bind(this)} value={this.state.username}required placeholder="Username"/>
         <input type="text" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required placeholder="Email"/>
-        <input type="text" name="password" onChange={this.onChange.bind(this)} value={this.state.password}required placeholder="Password"/>
+        <input type="password" name="password" onChange={this.onChange.bind(this)} value={this.state.password}required placeholder="Password"/>
         <input type="submit" value="Submit">
         </input>
       </form>
