@@ -50,5 +50,12 @@ describe("<App />", () => {
       wrapper.instance().addFeed(address);
       expect(wrapper.state("activeFeed")).toBe(address);                  
     })
+    test("calls #emit", () => {
+      const spy = jest.spyOn(Socket.prototype, 'emit');
+      wrapper.instance().addFeed();
+      expect(spy).toHaveBeenCalled();     
+      wrapper.instance().onDisconnect();            
+    })
+      
   })
 })
