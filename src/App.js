@@ -23,7 +23,7 @@ class App extends Component {
   }
   onConnect() {
     this.setState({connected: true});
-    this.socket.emit('feed subscribe')
+    this.socket.emit('feed subscribe');
   }
   onDisconnect() {
     this.setState({
@@ -56,6 +56,6 @@ class App extends Component {
       </div>
     );
   }
-}
+};
 
 export default App;

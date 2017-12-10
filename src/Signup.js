@@ -11,7 +11,6 @@ class Signup extends Component {
       password: ""
     };
   }
-
   onSubmit(e){
     this.setState({
       postcode: "",
@@ -28,7 +27,6 @@ class Signup extends Component {
       [e.target.name]: e.target.value
     });
   }
-
   render() {
     return (
       <div>
@@ -44,6 +42,6 @@ class Signup extends Component {
       </div>
     );
   }
-}
+};
 
 export default Signup;

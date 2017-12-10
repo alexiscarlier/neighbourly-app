@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import App from '../src/App'
+import App from '../src/App';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import { WebSocket } from 'mock-socket';
 global.WebSocket = WebSocket;
 import Socket from '../src/socket.js';
-
-
 
 const connected = "";
 const activeFeed = null;
@@ -18,57 +16,57 @@ describe("<App />", () => {
   describe("#render", () => {
     test("renders a div element", () => {
       expect(result.type).toBe('div');
-    })   
-  })
+    });
+  });
   describe("#onConnect", () => {
     test("sets connected state to true", () => {
-      expect(wrapper.state("connected")).toBe(false);      
+      expect(wrapper.state("connected")).toBe(false);
       wrapper.instance().onConnect();
       expect(wrapper.state("connected")).toBe(true);
-      wrapper.instance().onDisconnect();      
-    })
+      wrapper.instance().onDisconnect();
+    });
     test("calls #emit", () => {
       const spy = jest.spyOn(Socket.prototype, 'emit');
       wrapper.instance().onConnect();
-      expect(spy).toHaveBeenCalled();     
-      wrapper.instance().onDisconnect();            
-    })
-  })
+      expect(spy).toHaveBeenCalled();
+      wrapper.instance().onDisconnect();
+    });
+  });
   describe("#onDisconnect", () => {
     test("it resets state", () => {
-      expect(wrapper.state("connected")).toBe(false);      
+      expect(wrapper.state("connected")).toBe(false);
       wrapper.instance().onConnect();
       expect(wrapper.state("connected")).toBe(true);
       wrapper.instance().onDisconnect();
       expect(wrapper.state("connected")).toBe(false);
-    })
-  })
+    });
+  });
   describe("#addFeed", () => {
     test("sets activeFeed to address passed in", () => {
       const address = "Makers Academy";
-      expect(wrapper.state("activeFeed")).toBe(null);            
+      expect(wrapper.state("activeFeed")).toBe(null);
       wrapper.instance().addFeed(address);
-      expect(wrapper.state("activeFeed")).toBe(address);                  
-    })
+      expect(wrapper.state("activeFeed")).toBe(address);
+    });
     test("calls #emit", () => {
       const spy = jest.spyOn(Socket.prototype, 'emit');
       wrapper.instance().addFeed();
-      expect(spy).toHaveBeenCalled();     
-      wrapper.instance().onDisconnect();            
-    })
-  })
+      expect(spy).toHaveBeenCalled();
+      wrapper.instance().onDisconnect();
+    });
+  });
   describe("#onAddFeed", () => {
     test("adds activeFeed to feeds", () => {
       const address = "Makers Academy";
       const feed = { address: address}
-      wrapper.instance().addFeed(address);      
+      wrapper.instance().addFeed(address);
       wrapper.instance().onAddFeed(feed);
       expect(wrapper.state("feeds")).toContain(feed)
-    })
+    });
     test("won't add non-activeFeed to feeds", () => {
       const nonActiveFeed = "General Assembly";
       wrapper.instance().onAddFeed(nonActiveFeed);
       expect(wrapper.state("feeds")).not.toContain(nonActiveFeed)
-    })
-  })
-})
+    });
+  });
+});

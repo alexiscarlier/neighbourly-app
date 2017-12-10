@@ -6,6 +6,6 @@ class Feed extends Component {
       <div>Welcome to the feed for: {this.props.postcode}</div>
     );
   }
-}
+};
 
 export default Feed;

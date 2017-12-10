@@ -22,6 +22,6 @@ class FeedContainer extends Component {
       </div>
     )
   }
-}
+};
 
 export default FeedContainer;

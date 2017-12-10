@@ -8,7 +8,6 @@ class Socket {
     ws.onopen = this.open.bind(this);
     ws.close = this.close.bind(this);
   }
-
   message(e){
     try {
       const message = JSON.parse(e.data);
@@ -34,6 +33,6 @@ class Socket {
   close(e){
     this.ee.emit('disconnect');
   }
-}
+};
 
 export default Socket;
