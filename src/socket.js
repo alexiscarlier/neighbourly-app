@@ -1,4 +1,4 @@
-import {EventEmitter} from 'events';
+import { EventEmitter } from 'events';
 
 class Socket {
   constructor(ws = new WebSocket("ws://localhost:4000"), ee = new EventEmitter()){
