@@ -9,7 +9,7 @@ describe("<Feed />", () => {
         const result = renderer.getRenderOutput();
         expect(result.type).toBe('div');
         expect(result.props.children).toEqual([
-           "Welcome to the feed for...",  "Makers Academy"
+           "Welcome to the feed for: ",  "Makers Academy"
         ])
     })
 })
