@@ -69,4 +69,18 @@ describe("<App />", () => {
       expect(wrapper.state("feeds")).not.toContain({nonActiveFeed})
     });
   });
+  describe("#postSubscribe", () => {
+    test("sets activeFeed to feedId", () => {
+      const user = {
+        postcode: '12345',
+        username: 'david',
+        email: 'david@email.com',
+        password: '12345'
+      }
+      const feed = { defaultFeed: "12345"}
+      wrapper.instance().userSignUp(user);
+      wrapper.instance().postSubscribe(feed);
+      expect(wrapper.state("activeFeed")).toEqual("12345")
+    });
+  });
 });
