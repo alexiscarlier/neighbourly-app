@@ -78,15 +78,15 @@ describe("<App />", () => {
   });
   describe("#userSignUp", () => {
     test("triggers an event emitter", () => {
-      const spy = jest.spyOn(Socket.prototype, 'emit')
       const user = {
         postcode: '12345',
         username: 'david',
         email: 'david@email.com',
         password: '12345'
       }
+      const spy = jest.spyOn(Socket.prototype, 'emit')
       wrapper.instance().userSignUp(user);
-      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith('user signup', user);
       wrapper.instance().onDisconnect();
     });
   });
