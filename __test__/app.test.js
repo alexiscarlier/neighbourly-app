@@ -28,7 +28,7 @@ describe("<App />", () => {
     test("calls #emit", () => {
       const spy = jest.spyOn(Socket.prototype, 'emit');
       wrapper.instance().onConnect();
-      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith('feed subscribe');
       wrapper.instance().onDisconnect();
     });
   });
@@ -42,8 +42,8 @@ describe("<App />", () => {
     });
   });
   describe("#addFeed", () => {
+    const address = "Makers Academy";
     test("sets activeFeed to address passed in", () => {
-      const address = "Makers Academy";
       expect(wrapper.state("activeFeed")).toBe(null);
       wrapper.instance().addFeed(address);
       expect(wrapper.state("activeFeed")).toBe(address);
@@ -51,7 +51,7 @@ describe("<App />", () => {
     test("calls #emit", () => {
       const spy = jest.spyOn(Socket.prototype, 'emit');
       wrapper.instance().addFeed();
-      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith('feed add', {address});
       wrapper.instance().onDisconnect();
     });
   });
@@ -66,7 +66,28 @@ describe("<App />", () => {
     test("won't add non-activeFeed to feeds", () => {
       const nonActiveFeed = "General Assembly";
       wrapper.instance().onAddFeed(nonActiveFeed);
-      expect(wrapper.state("feeds")).not.toContain(nonActiveFeed)
+      expect(wrapper.state("feeds")).not.toContain({nonActiveFeed})
+    });
+  });
+  describe("#postSubscribe", () => {
+    test("sets activeFeed to feedId", () => {
+      const feed = { defaultFeed: "12345"}
+      wrapper.instance().postSubscribe(feed);
+      expect(wrapper.state("activeFeed")).toEqual("12345")
+    });
+  });
+  describe("#userSignUp", () => {
+    test("triggers an event emitter", () => {
+      const user = {
+        postcode: '12345',
+        username: 'david',
+        email: 'david@email.com',
+        password: '12345'
+      }
+      const spy = jest.spyOn(Socket.prototype, 'emit')
+      wrapper.instance().userSignUp(user);
+      expect(spy).toHaveBeenCalledWith('user signup', user);
+      wrapper.instance().onDisconnect();
     });
   });
 });
