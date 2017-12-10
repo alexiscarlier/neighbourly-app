@@ -65,5 +65,10 @@ describe("<App />", () => {
       wrapper.instance().onAddFeed(feed);
       expect(wrapper.state("feeds")).toContain(feed)
     })
+    test("won't add non-activeFeed to feeds", () => {
+      const nonActiveFeed = "General Assembly";
+      wrapper.instance().onAddFeed(nonActiveFeed);
+      expect(wrapper.state("feeds")).not.toContain(nonActiveFeed)
+    })
   })
 })
