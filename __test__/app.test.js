@@ -25,11 +25,22 @@ describe("<App />", () => {
       expect(wrapper.state("connected")).toBe(false);      
       wrapper.instance().onConnect();
       expect(wrapper.state("connected")).toBe(true);
+      wrapper.instance().onDisconnect();      
     })
     test("calls #emit", () => {
       const spy = jest.spyOn(Socket.prototype, 'emit');
       wrapper.instance().onConnect();
       expect(spy).toHaveBeenCalled();      
+      wrapper.instance().onDisconnect();            
+    })
+  })
+  describe("#onDisconnect", () => {
+    test("it resets state", () => {
+      expect(wrapper.state("connected")).toBe(false);      
+      wrapper.instance().onConnect();
+      expect(wrapper.state("connected")).toBe(true);
+      wrapper.instance().onDisconnect();
+      expect(wrapper.state("connected")).toBe(false);
     })
   })
 })
