@@ -4,7 +4,12 @@ class Signup extends Component {
 
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      address: "",
+      username: "",
+      email: "",
+      password: ""
+    };
   }
 
   onSubmit(e){
