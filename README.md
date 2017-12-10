@@ -26,6 +26,12 @@ $ cd neighbourly-app
 $ npm install
 ```
 
+Ensure create-react-app is installed globally:
+
+```
+$ npm install -g create-react-app
+```
+
 ### Running Tests
 
 ```
@@ -38,17 +44,12 @@ $ npm test
 $ npm start
 ```
 
+To simulate the server's response, you can use the [Kaazing WebSocket Echo Demo](http://demos.kaazing.com/echo/). In `./src/socket.js`, replace the local host address string with 'ws://demos.kaazing.com/echo'.
+
 ## Technologies used
 
 #### ReactJS
 Cient-side JavaScript framework
-
-
-#### External packages
-- [GoRethink](https://github.com/GoRethink/gorethink): RethinkDB Driver for Go
-- [wstest](https://github.com/posener/wstest): Client for testing WebSocket connections in Go
-
-
 
 ## File Manifest
 
@@ -105,28 +106,3 @@ Cient-side JavaScript framework
     |-- test
         |-- jestsetup.js
 ```
-
-
-
-# Neighbour.ly front-end
-
-The front-end to Neighbour.ly
-
-### Technologies used
-
-* React
-* create-react-app
-
-### Instructions
-
-* Clone the repo
-* Ensure create-react-app is installed globally:
-
-```
-npm install -g create-react-app
-```
-* Run `$ npm install`
-
-### Notes
-
-When the user submits their name, the event sends the name information to the websocket. The [Kaazing WebSocket Echo Demo](http://demos.kaazing.com/echo/) is currently hard-coded into the app, so the name is returned in the data payload.
