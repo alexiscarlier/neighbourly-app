@@ -8,24 +8,24 @@ describe("<Signup />", () => {
       const renderer = new ShallowRenderer();
       renderer.render(<Signup />);
       const result = renderer.getRenderOutput();
-      expect(result.props.children.type).toBe('form')
-  })
+      expect(result.props.children.type).toBe('form');
+  });
   test("form contains ", () => {
     const renderer = new ShallowRenderer();
     renderer.render(<Signup />);
     const render = renderer.getRenderOutput();
-    const result = render.props.children.props["children"][0]
-    expect(result).toContain('Please enter your address')
-  })
+    const result = render.props.children.props["children"][0];
+    expect(result).toContain('Please enter your address');
+  });
   it('should be called when submitting the form', () => {
-    const onSubmit = jest.fn()
+    const onSubmit = jest.fn();
     const wrapper = mount(<Signup  onSubmit={onSubmit} /> );
-    const form = wrapper.find('form')
-    expect(onSubmit.called).toBeTruthy
+    const form = wrapper.find('form');
+    expect(onSubmit.called).toBeTruthy;
   });
   test("is called upon changing the text field", () => {
-    const onChange = jest.fn()
-    const input = TestUtils.renderIntoDocument(<Signup onChange={onChange}/>)
-    expect(onChange.called).toBeTruthy
-  })
-})
+    const onChange = jest.fn();
+    const input = TestUtils.renderIntoDocument(<Signup onChange={onChange}/>);
+    expect(onChange.called).toBeTruthy;
+  });
+});
