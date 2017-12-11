@@ -1,5 +1,51 @@
 body {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  background-color: white;
+  font-family: 'Catamaran', serif;
+  font-size: 16px;
+  color: rgb(20, 20, 20);
+  border: solid 1px; border-color: rgb(197, 196, 196);
+  outline: none;
+  cursor: pointer;
+  width: 20%;
+}
+
+input[type="submit"]:hover {
+  border: solid 1px; border-color: rgb(19, 19, 19);
+}
+
+input[type="email"],
+input[type="password"], 
+input[type="text"] {
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 1px rgb(173, 173, 173);
+  outline: none;
+  height: 30px;
+  width: 95%;
+  max-width: 500px
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus, 
+input[type="text"]:focus {
+  border-bottom: solid 1px rgb(48, 47, 47);
+}
+
+#street_number, #route, #postal_code {
+  margin: 5px;
+  border: none;
+  border-bottom: solid 1px rgb(173, 173, 173);
+  outline: none;
 }

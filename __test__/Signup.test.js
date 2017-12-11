@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import Signup from '../src/Signup';
-import TestUtils from 'react-dom/test-utils';
 
 describe("<Signup />", () => {
 
@@ -39,7 +38,7 @@ describe("<Signup />", () => {
   describe('#onSubmit', () => {
     test('it prevents the page from reloading and calls userSignUp function', () => {
       const userSignUp = jest.fn()
-      const wrapper = shallow(<Signup userSignUp={userSignUp}/> );
+      const wrapper = mount(<Signup userSignUp={userSignUp}/> );
       const preventDefault = jest.fn()
       wrapper.find('form').first().simulate('submit', {preventDefault})
       expect(preventDefault).toHaveBeenCalled();
