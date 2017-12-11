@@ -29,7 +29,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        { this.props.redirect ? <Redirect to='/feeds' /> :
+        { this.props.isConnected ? <Redirect to='/feeds' /> :
         <form onSubmit={this.onSubmit.bind(this)}>
           <h1>Log in</h1>
           <input type="text" id="email" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required placeholder="Email"/>
