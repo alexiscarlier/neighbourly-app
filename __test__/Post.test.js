@@ -3,7 +3,7 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import Post from '../src/Post';
 
 const renderer = new ShallowRenderer();
-renderer.render(<Post title="Missing Cats" text="Fluffy, cute and missing. $1M reward!" createdAt={new Date(1234275648395).toDateString()}/>);
+renderer.render(<Post title="Missing Cats" text="Fluffy, cute and missing. $1M reward!" createdAt={1234275648395}/>);
 const result = renderer.getRenderOutput();
 
 
@@ -23,5 +23,5 @@ describe("<Post />", () => {
     expect(children[1].props.children).toEqual([
       "Post: ", "Fluffy, cute and missing. $1M reward!"
     ])
-  });    
+  });
 });
