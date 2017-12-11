@@ -15,7 +15,7 @@ describe("<Login />", () => {
       expect(result.type).toBe('div');
     });
 
-    test("renders a div element", () => {
+    test("renders a form element", () => {
       expect(result.props.children.type).toBe('form');
     });
   });
