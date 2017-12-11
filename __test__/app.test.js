@@ -95,4 +95,16 @@ describe("<App />", () => {
       wrapper.instance().onDisconnect();
     });
   });
+  describe("#userLogin", () => {
+    test("triggers an event emitter", () => {
+      const userCredentials = {
+        email: 'makers@makersacademy.com',
+        password: '12345'
+      }
+      const spy = jest.spyOn(Socket.prototype, 'emit')
+      wrapper.instance().userLogin(userCredentials);
+      expect(spy).toHaveBeenCalledWith('user login', userCredentials);
+      wrapper.instance().onDisconnect();
+    });
+  });
 });
