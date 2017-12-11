@@ -50,16 +50,19 @@ class Signup extends Component {
           <input
             id="street_number"
             name="streetNumber"
+            placeholder="Number"
             disabled="true"
           />
           <input
             id="route"
             name="streetName"
+            placeholder="Street"
             disabled="true"
           />
           <input
             id="postal_code"
             name="postcode"
+            placeholder="Postcode"
             disabled="true"
           />
           <input

@@ -42,3 +42,10 @@ input[type="password"]:focus,
 input[type="text"]:focus {
   border-bottom: solid 1px rgb(48, 47, 47);
 }
+
+#street_number, #route, #postal_code {
+  margin: 5px;
+  border: none;
+  border-bottom: solid 1px rgb(173, 173, 173);
+  outline: none;
+}
