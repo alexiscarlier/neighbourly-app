@@ -25,10 +25,17 @@ describe("<Login />", () => {
     });
   });
 
-  // describe("#OnSubmit", () => {
-  //
-  // });
-  //
+  describe("#OnSubmit", () => {
+    test("it prevents page from reloading and calls userLogin function", () => {
+      const userLogin = jest.fn();
+      const wrapper = mount(<Login userLogin={userLogin}/>);
+      const preventDefault = jest.fn();
+      wrapper.find('form').first().simulate('submit', {preventDefault});
+      expect(preventDefault).toHaveBeenCalled();
+      expect(userLogin).toHaveBeenCalled();
+    });
+  });
+
   describe('#onChange', () => {
     test('updates state attributes', () => {
       const wrapper = mount(<Login/> );

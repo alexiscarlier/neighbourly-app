@@ -16,7 +16,7 @@ class Login extends Component {
     });
     const userCredentials = this.state;
     e.preventDefault();
-    this.props.Login(userCredentials);
+    this.props.userLogin(userCredentials);
   }
 
   onChange(e) {
