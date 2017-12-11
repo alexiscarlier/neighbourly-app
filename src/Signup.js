@@ -23,7 +23,6 @@ class Signup extends Component {
       password: ""
     });
     const user = this.state;
-    console.log(user)
     e.preventDefault();
     this.props.userSignUp(user);
   }
@@ -63,7 +62,6 @@ class Signup extends Component {
             name="postcode"
             disabled="true"
           />
-
           <input
             type="text"
             id="username"
