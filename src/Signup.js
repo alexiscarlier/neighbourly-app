@@ -37,8 +37,7 @@ class Signup extends Component {
       <form onSubmit={this.onSubmit.bind(this)}>
         <h1>Sign-Up</h1>
        
-
-          <input id="autocomplete" name="address" onFocus={this.geolocate()} type="text" placeholder="Enter your address"></input>  
+          <input id="autocomplete" name="address" onFocus={window.geolocate()} type="text" placeholder="Enter your address"></input>  
 
           <input id="street_number" onChange={this.onChange.bind(this)} value={this.state.streetNumber} disabled="true"></input>
           <input id="route" onChange={this.onChange.bind(this)} value={this.state.streetName} disabled="true"></input>

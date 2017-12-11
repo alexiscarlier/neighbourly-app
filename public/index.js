@@ -21,6 +21,7 @@ function initAutocomplete() {
 
   // When the user selects an address from the dropdown, populate the address
   // fields in the form.
+  console.log("I'M IN AUTOCOMPLETE")
   autocomplete.addListener('place_changed', fillInAddress);
 }
 
@@ -47,6 +48,7 @@ function fillInAddress() {
 // Bias the autocomplete object to the user's geographical location,
 // as supplied by the browser's 'navigator.geolocation' object.
 function geolocate() {
+  console.log("I'm in geolocate")
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var geolocation = {
