@@ -21,3 +21,24 @@ input[type="submit"] {
 input[type="submit"]:hover {
   border: solid 1px; border-color: rgb(19, 19, 19);
 }
+
+input[type="email"],
+input[type="password"], 
+input[type="text"] {
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 1px rgb(173, 173, 173);
+  outline: none;
+  height: 30px;
+  width: 95%;
+  max-width: 500px
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus, 
+input[type="text"]:focus {
+  border-bottom: solid 1px rgb(48, 47, 47);
+}
