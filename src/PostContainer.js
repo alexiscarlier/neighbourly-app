@@ -9,7 +9,6 @@ class PostContainer extends Component {
       </div>
     )
   }
-
   renderPosts(posts){
     return posts.map((post, index) => {
       return <Post key={index} title={post.name} text={post.text} createdAt={post.createdAt} />
