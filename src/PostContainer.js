@@ -5,8 +5,13 @@ class PostContainer extends Component {
   render () {
     return (
       <div>
+        {this.renderPosts(this.props.posts)}
       </div>
     )
+  }
+
+  renderPosts(post){
+    return post;
   }
 };
 

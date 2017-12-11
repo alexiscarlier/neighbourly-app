@@ -3,13 +3,31 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import Post from '../src/Post';
 import PostContainer from '../src/PostContainer';
 
-const renderer = new ShallowRenderer();
-renderer.render(<PostContainer />);
-const result = renderer.getRenderOutput();
 
+const posts = [
+  {
+    ID: 1,
+    createdAt: 1234275648395,
+    name: "Missing Cat",
+    text: "Mittens is missing again",
+    feedID: "1"
+  },
+  {
+    ID: 2,
+    createdAt: 1234275648675,
+    name: "Missing Dog",
+    text: "Buster is missing too",
+    feedID: "1"
+  }];
+  
+  const renderer = new ShallowRenderer();
+  renderer.render(<PostContainer posts={posts}/>);
+  const result = renderer.getRenderOutput();
 
 describe("<PostContainer />", () => {
   test("renders <Posts />", () => {
     expect(result.type).toBe('div');
+    expect(result.props.children[0]).toEqual(posts[0]);
+    expect(result.props.children[1]).toEqual(posts[1]);    
   })
 })
