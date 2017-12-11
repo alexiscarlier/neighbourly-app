@@ -2,19 +2,26 @@ import React, { Component } from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import Post from '../src/Post';
 
+const renderer = new ShallowRenderer();
+renderer.render(<Post title="Missing Cats" text="Fluffy, cute and missing. $1M reward!" createdAt={new Date(1234275648395).toDateString()}/>);
+const result = renderer.getRenderOutput();
+
+
 describe("<Post />", () => {
-  test("it renders post title and text", () => {
-      const wrapper = mount(<Post title="Missing Cats" text="Fluffy, cute and missing. $1M reward!"/>)
-      const result = wrapper.instance();
-      expect(result.props.title).toEqual('Missing Cats');
-      expect(result.props.text).toEqual("Fluffy, cute and missing. $1M reward!");
-  });
   test("it renders a div", () => {
-    const renderer = new ShallowRenderer();
-    renderer.render(<Post title="Missing Cats" text="Fluffy, cute and missing. $1M reward!"/>);
-    const result = renderer.getRenderOutput();
     expect(result.type).toBe('div');
     expect(result.props.children[0].type).toBe('div')
     expect(result.props.children[1].type).toBe('div')
   });
+  test("it renders post title and text", () => {
+    console.log(result);
+    console.log(result.props.children[1]);
+    const children = result.props.children
+    expect(children[0].props.children).toEqual([
+      'Post title: ', 'Missing Cats', ' Post date: ', 'Tue Feb 10 2009'
+    ])
+    expect(children[1].props.children).toEqual([
+      "Post: ", "Fluffy, cute and missing. $1M reward!"
+    ])
+  });    
 });
