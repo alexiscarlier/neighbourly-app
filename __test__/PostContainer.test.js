@@ -19,7 +19,7 @@ const posts = [
     text: "Buster is missing too",
     feedID: "1"
   }];
-  
+
   const renderer = new ShallowRenderer();
   renderer.render(<PostContainer posts={posts}/>);
   const result = renderer.getRenderOutput();
@@ -27,7 +27,7 @@ const posts = [
 describe("<PostContainer />", () => {
   test("renders <Posts />", () => {
     expect(result.type).toBe('div');
-    expect(result.props.children[0]).toEqual(posts[0]);
-    expect(result.props.children[1]).toEqual(posts[1]);    
+    expect(result.props.children[0]).toEqual(<Post createdAt={1234275648395} text="Mittens is missing again" title="Missing Cat" />);
+    expect(result.props.children[1]).toEqual(<Post createdAt={1234275648675} text="Buster is missing too" title="Missing Dog" />);    
   })
 })

@@ -10,8 +10,10 @@ class PostContainer extends Component {
     )
   }
 
-  renderPosts(post){
-    return post;
+  renderPosts(posts){
+    return posts.map((post) => {
+      return <Post title={post.name} text={post.text} createdAt={post.createdAt} />
+    });
   }
 };
 
