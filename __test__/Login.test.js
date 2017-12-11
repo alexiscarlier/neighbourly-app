@@ -29,11 +29,11 @@ describe("<Login />", () => {
   //
   // });
   //
-  // describe('#onChange', () => {
-  //   // test('updates state attributes', () => {
-  //   //   const wrapper = mount(<Login/> );
-  //   //   wrapper.find('#email').get(0).props.onChange({target: {name: "email", value: "makers@makersacademy.com"}})
-  //   //   expect(wrapper.state().email).toBe('makers@makersacademy.com');
-  //   // });
-  // });
+  describe('#onChange', () => {
+    test('updates state attributes', () => {
+      const wrapper = mount(<Login/> );
+      wrapper.find('#email').get(0).props.onChange({target: {name: "email", value: "makers@makersacademy.com"}})
+      expect(wrapper.state().email).toBe('makers@makersacademy.com');
+    });
+  });
 });
