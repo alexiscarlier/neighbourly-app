@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props){
@@ -28,12 +29,16 @@ class Login extends Component {
   render() {
     return (
       <div>
+        { this.props.isConnected ? <Redirect to='/feeds' /> :
+        <div>
         <form onSubmit={this.onSubmit.bind(this)}>
           <h1>Log in</h1>
           <input type="text" id="email" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required placeholder="Email"/>
           <input type="password" id="password" name="password" onChange={this.onChange.bind(this)} value={this.state.password}required placeholder="Password"/>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Log in" />
         </form>
+      <p>or <a href="/signup">create a new account</a></p>
+      </div>}
       </div>
     )
   }

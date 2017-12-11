@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Feed from './Feed';
-
+// import { Redirect } from '../../../Library/Caches/typescript/2.6/node_modules/@types/react-router';
+import { Redirect } from 'react-router-dom';
 class FeedContainer extends Component {
   render () {
     return (
       <div>
-        { (() => {
+        <p>this is the feed</p>
+        {this.props.isConnected ?  (() => {
+         
           var activeFeed = this.props.activeFeed
           var feeds = this.props.feeds
           var feedList = []
@@ -18,7 +21,7 @@ class FeedContainer extends Component {
               return <Feed postcode={postcode} />
             }
         })()
-      }
+       : <Redirect to='/login' />}
       </div>
     )
   }

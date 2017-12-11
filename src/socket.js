@@ -12,6 +12,8 @@ class Socket {
     try {
       const message = JSON.parse(e.data);
       this.ee.emit(message.name, message.data);
+      console.log(message.name)
+      console.log(message.data)
     }
     catch(err){
       this.ee.emit('error', err);
