@@ -12,15 +12,16 @@ class Signup extends Component {
     };
   }
   onSubmit(e){
+    const user = this.state;
+    this.props.userSignUp(user);
+    
     this.setState({
       postcode: "",
       username: "",
       email: "",
       password: ""
     });
-    const user = this.state;
     e.preventDefault();
-    this.props.userSignUp(user);
   }
   onChange(e) {
     this.setState({

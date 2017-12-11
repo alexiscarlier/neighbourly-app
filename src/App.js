@@ -3,13 +3,14 @@ import './App.css';
 import Signup from './Signup';
 import Login from './Login';
 import FeedContainer from './FeedContainer';
+import MainMenu from './MainMenu';
 import Socket from './socket.js';
+// import Feed from './Feed.js'
 
 
 import {
   BrowserRouter as Router,
   Route,
-  Link
 } from 'react-router-dom'
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
     this.state = {
       activeFeed: null,
       feeds: [],
-      connected: false,
+      connected: false
     };
   }
   componentDidMount(){
@@ -28,6 +29,7 @@ class App extends Component {
     socket.on('disconnect', this.onDisconnect.bind(this));
     socket.on('feed add', this.onAddFeed.bind(this));
     socket.on('user created, logged in', this.postSubscribe.bind(this));
+    socket.on('login successful', this.postSubscribe.bind(this));
   }
   onConnect() {
     this.setState({connected: true});
@@ -52,7 +54,9 @@ class App extends Component {
     const feedId = feed.defaultFeed;
     this.setState({activeFeed: feed.defaultFeed});
     this.socket.emit('post subscribe', {feedId} );
+    //redirect to feed
   }
+
   userSignUp(user) {
     this.socket.emit('user signup', user);
   }
@@ -60,36 +64,31 @@ class App extends Component {
     this.socket.emit('user login', userCredentials);
   }
 
-
   render() {
+    
+    // if (redirect) {
+    //   return <Redirect to='/feeds'/>;
+    // }
     return (
       <div className="App">
-
         <Router>
               <div>
-                <ul>
-                  <li><Link to="/login">Login</Link></li>
-                  <li><Link to="/signup">Signup</Link></li>
-                  <li><Link to="/feeds">Feeds</Link></li>
-                </ul>
-          
+                <MainMenu />
                 <hr/>
+                
                 <Route path='/login' render={(props) => (
-                        <Login {...props} userLogin={this.userLogin.bind(this)} />
+                        <Login {...props} redirect={this.state.connected} userLogin={this.userLogin.bind(this)} />
                       )}/>
                 
                 <Route path="/signup" render={(props) => (
-                        <Signup {...props} userSignUp={this.userSignUp.bind(this)} />
+                        <Signup {...props} redirect={this.state.connected} userSignUp={this.userSignUp.bind(this)} />
                       )}/>
 
                   <Route path="/feeds" render={(props) => (
-                        <FeedContainer {...props} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                        <FeedContainer {...props} redirect={this.state.connected} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
                       )}/>
-
               </div>
             </Router>
-
-
       </div>
     );
   }
