@@ -12,5 +12,12 @@ describe("<Login />", () => {
       const result = renderer.getRenderOutput();
       expect(result.type).toBe('div');
     });
+
+    test("renders a div element", () => {
+      const renderer = new ShallowRenderer();
+      renderer.render(<Login />)
+      const result = renderer.getRenderOutput();
+      expect(result.props.children.type).toBe('form');
+    });
   });
 });
