@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Signup from './Signup';
+import Login from './Login';
 import FeedContainer from './FeedContainer';
 import Socket from './socket.js';
 
@@ -48,9 +49,13 @@ class App extends Component {
   userSignUp(user) {
     this.socket.emit('user signup', user);
   }
+  userLogin(userCredentials) {
+    this.socket.emit('user login', userCredentials);
+  }
   render() {
     return (
       <div className="App">
+        <Login userLogin={this.userLogin.bind(this)} />
         <Signup userSignUp={this.userSignUp.bind(this)} />
         <FeedContainer feeds={this.state.feeds} activeFeed={this.state.activeFeed}/>
       </div>
