@@ -8,12 +8,12 @@ const result = renderer.getRenderOutput();
 
 
 describe("<Post />", () => {
-  test("it renders a div", () => {
+  test("it renders correct nodes", () => {
     expect(result.type).toBe('div');
     expect(result.props.children[0].type).toBe('div')
     expect(result.props.children[1].type).toBe('div')
   });
-  test("it renders post title and text", () => {
+  test("it renders post title, text and date", () => {
     const children = result.props.children
     expect(children[0].props.children).toEqual([
       'Post title: ', 'Missing Cats', ' Post date: ', 'Tue Feb 10 2009'
