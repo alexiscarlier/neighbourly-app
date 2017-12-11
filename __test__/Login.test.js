@@ -20,12 +20,20 @@ describe("<Login />", () => {
     });
 
     test("form contains expected content ", () => {
-      const header = result.props.children.props.children;
+      const header = result.props.children.props.children[0];
       expect(header).toEqual(<h1>Log in</h1>);
     });
   });
 
-  describe("#OnSubmit", () => {
-
-  });
+  // describe("#OnSubmit", () => {
+  //
+  // });
+  //
+  // describe('#onChange', () => {
+  //   // test('updates state attributes', () => {
+  //   //   const wrapper = mount(<Login/> );
+  //   //   wrapper.find('#email').get(0).props.onChange({target: {name: "email", value: "makers@makersacademy.com"}})
+  //   //   expect(wrapper.state().email).toBe('makers@makersacademy.com');
+  //   // });
+  // });
 });
