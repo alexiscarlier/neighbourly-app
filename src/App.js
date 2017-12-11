@@ -20,7 +20,8 @@ class App extends Component {
     this.state = {
       activeFeed: null,
       feeds: [],
-      connected: false
+      connected: false,
+      loggedin:false
     };
   }
   componentDidMount(){
@@ -34,6 +35,7 @@ class App extends Component {
   onConnect() {
     this.setState({connected: true});
     this.socket.emit('feed subscribe');
+    console.log("on connect", this.state);
   }
   onDisconnect() {
     
@@ -41,9 +43,10 @@ class App extends Component {
       activeFeed: null,
       feeds: [],
       connected: false});
-      this.setState({connected:false});
+      this.setState({loggedin:false});
 
-      console.log(this.state);
+      console.log("on disconect", this.state);
+      
   }
   onAddFeed(feed) {
     let{feeds} = this.state;
@@ -53,19 +56,26 @@ class App extends Component {
   addFeed(address) {
     this.setState({activeFeed: address});
     this.socket.emit('feed add', {address});
+    console.log("on addfeed", this.state);
   }
   postSubscribe(feed) {
     const feedId = feed.defaultFeed;
     this.setState({activeFeed: feed.defaultFeed});
+    this.setState({loggedin:true})
     this.socket.emit('post subscribe', {feedId} );
+    console.log("on postsubscribe", this.state);
     //redirect to feed
   }
 
   userSignUp(user) {
     this.socket.emit('user signup', user);
+    this.setState({loggedin:true})
+    
+    console.log("on user signup", this.state);
   }
   userLogin(userCredentials) {
     this.socket.emit('user login', userCredentials);
+    console.log("on user login", this.state);
   }
 
   render() {
@@ -73,19 +83,19 @@ class App extends Component {
       <div className="App">
         <Router>
               <div>
-                <MainMenu isConnected={this.state.connected}/>
-                {this.state.connected ? <a href="/" onClick={()=>{this.onDisconnect()}}>Log Off</a> :<hr /> }
+                <MainMenu isConnected={this.state.loggedin}/>
+                {this.state.loggedin ? <a href="/" onClick={()=>{this.onDisconnect()}}>Log Off</a> :<hr /> }
                 
                 <Route path='/login' render={(props) => (
-                        <Login {...props} isConnected={this.state.connected} userLogin={this.userLogin.bind(this)} />
+                        <Login {...props} isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
                       )}/>
                 
                 <Route path="/signup" render={(props) => (
-                        <Signup {...props} isConnected={this.state.connected} userSignUp={this.userSignUp.bind(this)} />
+                        <Signup {...props} isConnected={this.state.loggedin} userSignUp={this.userSignUp.bind(this)} />
                       )}/>
 
                 <Route path="/feeds" render={(props) => (
-                        <FeedContainer {...props} isConnected={this.state.connected} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                        <FeedContainer {...props} isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
                       )}/>
               </div>
             </Router>
