@@ -17,6 +17,11 @@ describe("<App />", () => {
     test("renders a div element", () => {
       expect(result.type).toBe('div');
     });
+    test("renders correct child nodes", () => {
+      expect(result.props.children[0].key).toBe('signup');
+      expect(result.props.children[1].key).toBe('feedContainer');
+      expect(result.props.children[2].key).toBe('postContainer');
+    })
   });
   describe("#onConnect", () => {
     test("sets connected state to true", () => {

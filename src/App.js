@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Signup from './Signup';
 import FeedContainer from './FeedContainer';
+import PostContainer from './PostContainer';
 import Socket from './socket.js';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
     this.state = {
       activeFeed: null,
       feeds: [],
+      posts: [],
       connected: false,
     };
   }
@@ -28,7 +30,6 @@ class App extends Component {
   onDisconnect() {
     this.setState({
       activeFeed: null,
-      feeds: [],
       connected: false});
   }
   onAddFeed(feed) {
@@ -51,8 +52,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Signup userSignUp={this.userSignUp.bind(this)} />
-        <FeedContainer feeds={this.state.feeds} activeFeed={this.state.activeFeed}/>
+        <Signup key="signup" userSignUp={this.userSignUp.bind(this)} />
+        <FeedContainer key="feedContainer" feeds={this.state.feeds} activeFeed={this.state.activeFeed}/>
+        <PostContainer key="postContainer" posts={this.state.posts}/>
       </div>
     );
   }
