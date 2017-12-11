@@ -53,8 +53,6 @@ class App extends Component {
       <div className="App">
         <Signup userSignUp={this.userSignUp.bind(this)} />
         <FeedContainer feeds={this.state.feeds} activeFeed={this.state.activeFeed}/>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4UQFxiq0Dhs4tmvmZJkUed6IC_KpYEOU&libraries=places&callback=initAutocomplete"
-      async defer></script>
       </div>
     );
   }
