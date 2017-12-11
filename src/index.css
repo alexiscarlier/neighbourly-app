@@ -1,17 +1,23 @@
 body {
+  background-color: rgb(255, 255, 255);
   text-align: center;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 
-input, input[type='submit'] {
-  margin: 5px;
+input[type="submit"] {
+  margin-top: 10px;
+  background-color: white;
+  font-family: 'Catamaran', serif;
+  font-size: 16px;
+  color: rgb(20, 20, 20);
+  border: solid 1px; border-color: rgb(197, 196, 196);
+  outline: none;
+  cursor: pointer;
+  width: 20%;
 }
 
-input[type='submit'] {
-  width: 120px;
-  height: 20px;
-  outline: none;
-  border-radius: 12px
+input[type="submit"]:hover {
+  border: solid 1px; border-color: rgb(19, 19, 19);
 }
