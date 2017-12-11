@@ -27,7 +27,7 @@ const posts = [
 describe("<PostContainer />", () => {
   test("renders <Posts />", () => {
     expect(result.type).toBe('div');
-    expect(result.props.children[0]).toEqual(<Post createdAt={1234275648395} text="Mittens is missing again" title="Missing Cat" />);
-    expect(result.props.children[1]).toEqual(<Post createdAt={1234275648675} text="Buster is missing too" title="Missing Dog" />);    
+    expect(result.props.children[0]).toEqual(<Post key={0} createdAt={1234275648395} text="Mittens is missing again" title="Missing Cat" />);
+    expect(result.props.children[1]).toEqual(<Post key={1} createdAt={1234275648675} text="Buster is missing too" title="Missing Dog" />);    
   })
 })
