@@ -6,6 +6,7 @@ class FeedContainer extends Component {
     return (
       <div>
         { (() => {
+         
           var activeFeed = this.props.activeFeed
           var feeds = this.props.feeds
           var feedList = []

@@ -5,6 +5,13 @@ import Login from './Login';
 import FeedContainer from './FeedContainer';
 import Socket from './socket.js';
 
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+
 class App extends Component {
 
   constructor(props) {
@@ -52,15 +59,44 @@ class App extends Component {
   userLogin(userCredentials) {
     this.socket.emit('user login', userCredentials);
   }
+
+
   render() {
     return (
       <div className="App">
-        <Login userLogin={this.userLogin.bind(this)} />
-        <Signup userSignUp={this.userSignUp.bind(this)} />
-        <FeedContainer feeds={this.state.feeds} activeFeed={this.state.activeFeed}/>
+
+        <Router>
+              <div>
+                <ul>
+                  <li><Link to="/login">Login</Link></li>
+                  <li><Link to="/signup">Signup</Link></li>
+                  <li><Link to="/feeds">Feeds</Link></li>
+                </ul>
+          
+                <hr/>
+                <Route path='/login' render={(props) => (
+                        <Login {...props} userLogin={this.userLogin.bind(this)} />
+                      )}/>
+                
+                <Route path="/signup" render={(props) => (
+                        <Signup {...props} userSignUp={this.userSignUp.bind(this)} />
+                      )}/>
+
+                  <Route path="/feeds" render={(props) => (
+                        <FeedContainer {...props} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                      )}/>
+
+              </div>
+            </Router>
+
+
       </div>
     );
   }
+
+
+
+
 };
 
 export default App;
