@@ -14,8 +14,6 @@ describe("<Post />", () => {
     expect(result.props.children[1].type).toBe('div')
   });
   test("it renders post title and text", () => {
-    console.log(result);
-    console.log(result.props.children[1]);
     const children = result.props.children
     expect(children[0].props.children).toEqual([
       'Post title: ', 'Missing Cats', ' Post date: ', 'Tue Feb 10 2009'
