@@ -27,6 +27,7 @@ class Signup extends Component {
     this.props.userSignUp(user);
   }
   onChange(e) {
+    //somehow get other form paramenters
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -39,11 +40,11 @@ class Signup extends Component {
        
           <input id="autocomplete" name="address" onFocus={window.geolocate()} type="text" placeholder="Enter your address"></input>  
 
-          <input id="street_number" onChange={this.onChange.bind(this)} value={this.state.streetNumber} disabled="true"></input>
-          <input id="route" onChange={this.onChange.bind(this)} value={this.state.streetName} disabled="true"></input>
-          <input id="postal_code" onChange={this.onChange.bind(this)} value={this.state.postcode} disabled="true"></input>
+          <input id="street_number" name="streetNumber" onChange={this.onChange.bind(this)} value={this.state.streetNumber}></input>
+          <input id="route" name="streetName" onChange={this.onChange.bind(this)} value={this.state.streetName}></input>
+          <input id="postal_code" name="postcode" onChange={this.onChange.bind(this)} value={this.state.postcode}></input>
 
-        <input type="text" id="username" name="username" onChange={this.onChange.bind(this)} value={this.state.username}required placeholder="Username"/>
+        <input type="text" id="username" name="username" onChange={this.onChange.bind(this)} value={this.state.username} required placeholder="Username"/>
         <input type="text" id="email" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required placeholder="Email"/>
         <input type="password" id="password" name="password" onChange={this.onChange.bind(this)} value={this.state.password}required placeholder="Password"/>
         <input type="submit" value="Submit">
