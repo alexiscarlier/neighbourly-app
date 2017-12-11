@@ -36,7 +36,7 @@ class Signup extends Component {
         <input type="text" id="username" name="username" onChange={this.onChange.bind(this)} value={this.state.username}required placeholder="Username"/>
         <input type="text" id="email" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required placeholder="Email"/>
         <input type="password" id="password" name="password" onChange={this.onChange.bind(this)} value={this.state.password}required placeholder="Password"/>
-        <input type="submit" value="Submit">
+        <br></br><input type="submit" value="Submit">
         </input>
       </form>
       </div>
