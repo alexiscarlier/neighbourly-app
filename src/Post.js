@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Post extends Component {
   render () {
     return (
-      <div>Post title: </div>
+      <div>Post title: {this.props.title}</div>
     );
   }
 };
