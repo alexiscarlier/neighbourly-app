@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 
 class NewPost extends Component {
   constructor(props){
     super(props);
     this.state = {
-      name: "",
       text: "",
       feed: {
         id: props.activeFeed

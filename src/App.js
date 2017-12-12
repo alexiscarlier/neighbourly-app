@@ -35,6 +35,7 @@ class App extends Component {
     socket.on('feed add', this.onAddFeed.bind(this));
     socket.on('user created, logged in', this.postSubscribe.bind(this));
     socket.on('login successful', this.postSubscribe.bind(this));
+    socket.on('post add', this.onAddPost.bind(this));
   }
   onConnect() {
     this.setState({connected: true});
@@ -48,13 +49,16 @@ class App extends Component {
       connected: false,
       loggedin: false});
   }
-
   onAddFeed(feed) {
     let{feeds} = this.state;
     feeds.push(feed);
     this.setState({feeds});
   }
-
+  onAddPost(post) {
+    let{posts} = this.state;
+    posts.push(post);
+    this.setState({posts});
+  }
   addFeed(address) {
     this.setState({activeFeed: address});
     this.socket.emit('feed add', {address});
@@ -75,6 +79,7 @@ class App extends Component {
     this.socket.emit('user login', userCredentials);
   }
   addPost(postContents) {
+    console.log(postContents);
     this.socket.emit('post add', postContents);
   }
 
