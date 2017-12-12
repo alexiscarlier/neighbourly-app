@@ -17,11 +17,12 @@ describe("<App />", () => {
     test("renders a div element", () => {
       expect(result.type).toBe('div');
     });
-    // test("renders correct child nodes", () => {
-    //   expect(result.props.children[0].key).toBe('signup');
-    //   expect(result.props.children[1].key).toBe('feedContainer');
-    //   expect(result.props.children[2].key).toBe('postContainer');
-    // })
+    test("renders correct child nodes", () => {
+      console.log(result.props.children)
+      expect(result.type.proptypes.children[0]).toBe('signup');
+      expect(result.props.children[1]).toBe('feedContainer');
+      expect(result.props.children[2]).toBe('postContainer');
+    })
   });
   describe("#onConnect", () => {
     test("sets connected state to true", () => {
