@@ -5,6 +5,7 @@ import Login from './Login';
 import FeedContainer from './FeedContainer';
 // import Home from './Home';
 import MainMenu from './MainMenu';
+import PostContainer from './PostContainer';
 import Socket from './socket.js';
 // import Feed from './Feed.js'
 
@@ -21,6 +22,7 @@ class App extends Component {
     this.state = {
       activeFeed: null,
       feeds: [],
+      posts: [],
       connected: false,
       loggedin: false
     };
@@ -39,27 +41,28 @@ class App extends Component {
     console.log("on connect", this.state);
   }
   onDisconnect() {
-    
     this.setState({
+      posts: [],
       activeFeed: null,
       feeds: [],
       connected: false,
       loggedin: false});
       // this.setState({loggedin:false});
-
       console.log("on disconect", this.state);
-      
   }
+
   onAddFeed(feed) {
     let{feeds} = this.state;
     feeds.push(feed);
     this.setState({feeds});
   }
+
   addFeed(address) {
     this.setState({activeFeed: address});
     this.socket.emit('feed add', {address});
     console.log("on addfeed", this.state);
   }
+
   postSubscribe(feed) {
     const feedId = feed.defaultFeed;
     this.setState({activeFeed: feed.defaultFeed});
@@ -90,15 +93,18 @@ class App extends Component {
                 
 
                 <Route path='/login' render={(props) => (
-                        <Login {...props} isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
+                        <Login {...props} key="login" isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
                       )}/>
                 
                 <Route path="/signup" render={(props) => (
-                        <Signup {...props} isConnected={this.state.loggedin} userSignUp={this.userSignUp.bind(this)} />
+                        <Signup {...props} key="signup" isConnected={this.state.loggedin} userSignUp={this.userSignUp.bind(this)} />
                       )}/>
 
                 <Route path="/feeds" render={(props) => (
-                        <FeedContainer {...props} isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                        <div>
+                        <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                        <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
+                        </div>
                       )}/>
               </div>
             </Router>
