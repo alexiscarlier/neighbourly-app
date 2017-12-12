@@ -16,11 +16,11 @@ describe("<Login />", () => {
     });
 
     test("renders a form element", () => {
-      expect(result.props.children.type).toBe('form');
+      expect(result.props.children.type).toBe('div');
     });
 
     test("form contains expected content ", () => {
-      const header = result.props.children.props.children[0];
+      const header = result.props.children.props.children[0].props.children[0];
       expect(header).toEqual(<h1>Log in</h1>);
     });
   });

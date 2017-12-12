@@ -22,7 +22,7 @@ class App extends Component {
       activeFeed: null,
       feeds: [],
       connected: false,
-      loggedin:false
+      loggedin: false
     };
   }
   componentDidMount(){
@@ -43,8 +43,9 @@ class App extends Component {
     this.setState({
       activeFeed: null,
       feeds: [],
-      connected: false});
-      this.setState({loggedin:false});
+      connected: false,
+      loggedin: false});
+      // this.setState({loggedin:false});
 
       console.log("on disconect", this.state);
       

@@ -6,11 +6,12 @@ import Feed from '../src/Feed';
 
 describe("<FeedContainer />", () => {
     test("renders <Feed /> if feeds not empty", () => {
+
         const renderer = new ShallowRenderer();
         const feeds = [{address: "Makers Academy"}];
-        renderer.render(<FeedContainer feeds={feeds}/>);
+        renderer.render(<FeedContainer isConnected={true} feeds={feeds}/>);
         const result = renderer.getRenderOutput();
         expect(result.type).toBe('div');
-        expect(result.props.children).toEqual(<Feed postcode="Makers Academy" />)
+        expect(result.props.children[0]).toEqual(<p>this is the feed</p>)
     });
 });

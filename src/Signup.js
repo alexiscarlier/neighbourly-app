@@ -46,7 +46,8 @@ class Signup extends Component {
           <input
             id="autocomplete"
             name="address"
-            onFocus={window.geolocate()}
+           
+            //onFocus={window.geolocate()}
             type="text"
             placeholder="Enter your address"
           /> 
