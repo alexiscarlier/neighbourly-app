@@ -16,8 +16,10 @@ describe("<NewPost />", () => {
   describe('#onChange', () => {
     test('updates state attributes', () => {
       const wrapper = mount(<NewPost/> );
-      wrapper.find('#contents').get(0).props.onChange({target: {name: "contents", value: "First post"}})
-      expect(wrapper.state().contents).toBe('First post');
+      wrapper.find('#title').get(0).props.onChange({target: {name: "title", value: "First post title"}})
+      wrapper.find('#text').get(0).props.onChange({target: {name: "text", value: "First post text"}})
+      expect(wrapper.state().title).toBe('First post title');
+      expect(wrapper.state().text).toBe('First post text');
     });
   });
 
