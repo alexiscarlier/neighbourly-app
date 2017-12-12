@@ -39,4 +39,12 @@ describe("<FeedForm />", () => {
       expect(addFeed).toHaveBeenCalled();
     });
   });
+  describe('#onChange', () => {
+    test('updates state attributes', () => {
+      const wrapper = mount(<FeedForm/> );
+      const input = wrapper.find('form').get(0).props.children[0].props
+      input.onChange({target: {name: "name", value: "This is a feed"}})
+      expect(wrapper.state().name).toBe('This is a feed');
+    });
+  });
 });
