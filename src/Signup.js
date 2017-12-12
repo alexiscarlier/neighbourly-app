@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Signup extends Component {
 
@@ -14,6 +15,9 @@ class Signup extends Component {
     };
   }
   onSubmit(e){
+    const user = this.state;
+    this.props.userSignUp(user);
+    
     this.setState({
       streetNumber: "",
       streetName: "",
@@ -22,9 +26,7 @@ class Signup extends Component {
       email: "",
       password: ""
     });
-    const user = this.state;
     e.preventDefault();
-    this.props.userSignUp(user);
   }
   onChange(e) {
     this.setState({
@@ -37,6 +39,7 @@ class Signup extends Component {
   render() {
     return (
       <div>
+{ this.props.isConnected ? <Redirect to='/feeds' /> :
       <form id="signup-form" onSubmit={this.onSubmit.bind(this)} onChange={this.onChange.bind(this)}>
         <h1>Sign-Up</h1>
        
@@ -90,7 +93,7 @@ class Signup extends Component {
             required
           />
           <input type="submit" value="Submit" />
-        </form>
+    </form> }
       </div>
     );
   }
