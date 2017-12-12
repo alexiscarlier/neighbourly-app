@@ -5,14 +5,14 @@ class FeedForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      feedName: ""
+      name: ""
     };
   }
   onSubmit(e){
     const feed = this.state;
-    // this.props.userSignUp(user);
+    this.props.addFeed(feed);
     this.setState({
-      feedName: ""
+      name: ""
     });
     e.preventDefault();
   }
@@ -26,7 +26,7 @@ class FeedForm extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit.bind(this)}>
-          <input type="text" name="feedName" />
+          <input type="text" name="name" onChange={this.onChange.bind(this)} value={this.state.name}/>
           <input type="submit" name="submit" />
         </form>
       </div>  

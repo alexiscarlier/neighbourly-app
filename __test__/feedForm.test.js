@@ -18,7 +18,7 @@ describe("<FeedForm />", () => {
     renderer.render(<FeedForm />);
     const render = renderer.getRenderOutput();
     const result = render.props.children.props["children"][0];
-    expect(result).toEqual(<input type="text" name="feedName" />);
+    expect(result.props.type).toEqual("text");
   });
 
   test('should not be call onSubmit when submitting empty form', () => {
@@ -29,14 +29,14 @@ describe("<FeedForm />", () => {
   expect(onSubmit).not.toHaveBeenCalled()
   });
 
-  // describe('#onSubmit', () => {
-  //   test('it prevents the page from reloading and calls userSignUp function', () => {
-  //     const userSignUp = jest.fn()
-  //     const wrapper = mount(<FeedForm userSignUp={userSignUp}/> );
-  //     const preventDefault = jest.fn()
-  //     wrapper.find('form').first().simulate('submit', {preventDefault})
-  //     expect(preventDefault).toHaveBeenCalled();
-  //     expect(userSignUp).toHaveBeenCalled();
-  //   });
-  // });
+  describe('#addFeed', () => {
+    test('it prevents the page from reloading and calls addFeed function', () => {
+      const addFeed = jest.fn()
+      const wrapper = mount(<FeedForm addFeed={addFeed}/> );
+      const preventDefault = jest.fn()
+      wrapper.find('form').first().simulate('submit', {preventDefault})
+      expect(preventDefault).toHaveBeenCalled();
+      expect(addFeed).toHaveBeenCalled();
+    });
+  });
 });
