@@ -67,6 +67,12 @@ class App extends Component {
     this.socket.emit('post subscribe', {feedId} );
   }
 
+  postSwitch(feedId) {
+    console.log("this is the feed we want to subscribe to: ", feedId)
+    // this.socket.emit('post unsubscribe', {activeFeed})
+    // this.socket.emit('post subscribe', {feedId})
+  }
+
   userSignUp(user) {
     this.socket.emit('user signup', user);
     this.setState({loggedin:true})
@@ -97,7 +103,7 @@ class App extends Component {
 
                 <Route path="/feeds" render={(props) => (
                         <div>
-                        <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                        <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} postSwitch={this.postSwitch.bind(this)} activeFeed={this.state.activeFeed} />
                         <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
                         <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
                         </div>
