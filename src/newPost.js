@@ -7,7 +7,7 @@ class NewPost extends Component {
       name: "",
       text: "",
       feed: {
-        id: props.activeFeed
+        id: ""
       }
     };
     console.log(props.activeFeed)
@@ -22,9 +22,6 @@ class NewPost extends Component {
     this.setState({
         name: "",
         text: "",
-        feed: {
-          id: ""
-        }
     });
   }
 
@@ -32,7 +29,7 @@ class NewPost extends Component {
     this.setState({
       [e.target.name]: e.target.value,
       feed: {
-        id: document.getElementById("feedId").value
+        id: this.props.activeFeed
       }
     });
   }
