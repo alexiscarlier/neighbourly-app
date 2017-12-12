@@ -68,9 +68,8 @@ class App extends Component {
   }
 
   postSwitch(feedId) {
-    console.log("this is the feed we want to subscribe to: ", feedId)
-    // this.socket.emit('post unsubscribe', {activeFeed})
-    // this.socket.emit('post subscribe', {feedId})
+    this.socket.emit('post unsubscribe')
+    this.socket.emit('post subscribe', {feedId})
   }
 
   userSignUp(user) {
