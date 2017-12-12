@@ -17,12 +17,6 @@ describe("<App />", () => {
     test("renders a div element", () => {
       expect(result.type).toBe('div');
     });
-    test("renders correct child nodes", () => {
-      console.log(result.props.children)
-      expect(result.type.proptypes.children[0]).toBe('signup');
-      expect(result.props.children[1]).toBe('feedContainer');
-      expect(result.props.children[2]).toBe('postContainer');
-    })
   });
   describe("#onConnect", () => {
     test("sets connected state to true", () => {
@@ -39,6 +33,15 @@ describe("<App />", () => {
     });
   });
   describe("#onDisconnect", () => {
+    test("it resets state", () => {
+      expect(wrapper.state("connected")).toBe(false);
+      wrapper.instance().onConnect();
+      expect(wrapper.state("connected")).toBe(true);
+      wrapper.instance().onDisconnect();
+      expect(wrapper.state("connected")).toBe(false);
+    });
+  });
+  describe("#onClick", () => {
     test("it resets state", () => {
       expect(wrapper.state("connected")).toBe(false);
       wrapper.instance().onConnect();
