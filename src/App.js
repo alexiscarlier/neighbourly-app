@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Signup from './Signup';
 import Login from './Login';
+import NewPost from './newPost';
 import FeedContainer from './FeedContainer';
 // import Home from './Home';
 import MainMenu from './MainMenu';
@@ -75,12 +76,15 @@ class App extends Component {
   userSignUp(user) {
     this.socket.emit('user signup', user);
     this.setState({loggedin:true})
-    
+
     console.log("on user signup", this.state);
   }
   userLogin(userCredentials) {
     this.socket.emit('user login', userCredentials);
     console.log("on user login", this.state);
+  }
+  addPost(postContents) {
+    this.socket.emit('post add', {postContents});
   }
 
   render() {
@@ -90,12 +94,12 @@ class App extends Component {
               <div>
                 <MainMenu isConnected={this.state.loggedin}/>
                 {this.state.loggedin ? <a href="/" onClick={()=>{this.onDisconnect()}}>Log Off</a> :<hr /> }
-                
+
 
                 <Route path='/login' render={(props) => (
                         <Login {...props} key="login" isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
                       )}/>
-                
+
                 <Route path="/signup" render={(props) => (
                         <Signup {...props} key="signup" isConnected={this.state.loggedin} userSignUp={this.userSignUp.bind(this)} />
                       )}/>
@@ -104,6 +108,7 @@ class App extends Component {
                         <div>
                         <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
                         <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
+                        <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
                         </div>
                       )}/>
               </div>
