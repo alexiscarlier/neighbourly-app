@@ -12,7 +12,7 @@ class FeedContainer extends Component {
 
         var feeds = this.props.feeds
         var feedList = feeds.map((feed, index) => {
-           return <Feed feed={feed} key={index} />
+           return <Feed feed={feed} key={index} onClick=/>
         })
 
         return feedList
