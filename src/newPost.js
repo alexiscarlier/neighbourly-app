@@ -31,9 +31,10 @@ class NewPost extends Component {
   render() {
     return(
       <div>
-        <form onSubmit={this.onSubmit.bind(this)}>
+        <form id="new-post" onSubmit={this.onSubmit.bind(this)}>
           <h1>Create Post</h1>
-          <input type="text" id="contents" name="contents" onChange={this.onChange.bind(this)} value={this.state.contents} required placeholder="Contents"/>
+          <input type="text" id="title" name="title" onChange={this.onChange.bind(this)} value={this.state.contents} required placeholder="Enter a title"/>
+          <textarea form="new-post" id="text" name="text" onChange={this.onChange.bind(this)} value={this.state.contents} required placeholder="Enter your message"></textarea>
           <input type="submit" value="Create Post" />
         </form>
       </div>
