@@ -6,7 +6,6 @@ const renderer = new ShallowRenderer();
 const feeds = [{address: "Makers Academy"}];
 renderer.render(<FeedContainer isConnected={true} feeds={feeds}/>);
 const result = renderer.getRenderOutput();
-const wrapper = mount(<FeedContainer isConnected={true} feeds={feeds} />);
 
 describe("<FeedContainer />", () => {
     test("renders <Feed /> if feeds not empty", () => {
