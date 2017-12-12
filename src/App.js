@@ -75,7 +75,7 @@ class App extends Component {
     this.socket.emit('user login', userCredentials);
   }
   addPost(postContents) {
-    this.socket.emit('post add', {postContents});
+    this.socket.emit('post add', postContents);
   }
 
   render() {

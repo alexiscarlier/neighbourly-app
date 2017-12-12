@@ -107,4 +107,15 @@ describe("<App />", () => {
       wrapper.instance().onDisconnect();
     });
   });
+  describe("#addPost", () => {
+    const postContents = {
+      name: "My post name",
+      text: "My post text",
+      feed: {id: 1}
+    }
+    const spy = jest.spyOn(Socket.prototype, 'emit')
+    wrapper.instance().addPost(postContents);
+    expect(spy).toHaveBeenCalledWith('post add', postContents);
+    wrapper.instance().onDisconnect();
+  })
 });
