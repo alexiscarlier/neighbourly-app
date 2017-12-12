@@ -1,0 +1,8 @@
+2017-12-12T15:08:22.109561000 40.033967s notice: Recursively removing directory /Users/jon/Projects/neighbourly-app/rethinkdb_data/tmp
+2017-12-12T15:08:22.115085000 40.039496s notice: Initializing directory /Users/jon/Projects/neighbourly-app/rethinkdb_data
+2017-12-12T15:08:22.115288000 40.039692s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/jon/Projects/neighbourly-app/rethinkdb_data' did not already exist or is empty.)
+2017-12-12T15:08:22.115355000 40.039759s notice: Running rethinkdb 2.3.6 (CLANG 9.0.0 (clang-900.0.37))...
+2017-12-12T15:08:22.136429000 40.060833s notice: Running on Darwin 17.2.0 x86_64
+2017-12-12T15:08:22.136514000 40.060917s notice: Loading data from directory /Users/jon/Projects/neighbourly-app/rethinkdb_data
+2017-12-12T15:08:22.282307000 40.206705s info: Automatically using cache size of 165 MB
+2017-12-12T15:08:22.282783000 40.207181s error: TCP socket creation failed for port 29015: Address already in use.

@@ -9,11 +9,10 @@ class Socket {
     ws.close = this.close.bind(this);
   }
   message(e){
+    console.log("Message received", e.data)
     try {
       const message = JSON.parse(e.data);
       this.ee.emit(message.name, message.data);
-      console.log(message.name)
-      console.log(message.data)
     }
     catch(err){
       this.ee.emit('error', err);
@@ -27,6 +26,7 @@ class Socket {
   }
   emit(name, data) {
     const message = JSON.stringify({name, data});
+    console.log("Message emitted: ", message)
     this.ws.send(message);
   }
   open(e){

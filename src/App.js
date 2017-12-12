@@ -30,6 +30,8 @@ class App extends Component {
   }
   componentDidMount(){
     let socket = this.socket = new Socket();
+    console.log("I'm componentDidMount")
+    console.log("State:", this.state)
     socket.on('connect', this.onConnect.bind(this));
     socket.on('disconnect', this.onDisconnect.bind(this));
     socket.on('feed add', this.onAddFeed.bind(this));
@@ -38,10 +40,15 @@ class App extends Component {
     socket.on('post add', this.onAddPost.bind(this));
   }
   onConnect() {
+    console.log("I'm onConnect")
+    console.log("State:", this.state)
     this.setState({connected: true});
-    this.socket.emit('feed subscribe');
+    console.log("State:", this.state)
+    // this.socket.emit('feed subscribe');
   }
   onDisconnect() {
+    console.log("I'm disconnect")
+    console.log("State:", this.state)
     this.setState({
       posts: [],
       activeFeed: null,
@@ -50,36 +57,54 @@ class App extends Component {
       loggedin: false});
   }
   onAddFeed(feed) {
+    console.log("I'm onAddFeed")
+    console.log("State:", this.state)
     let{feeds} = this.state;
     feeds.push(feed);
     this.setState({feeds});
   }
   onAddPost(post) {
+    console.log("I'm onAddFeed")
+    console.log("State:", this.state)
+    console.log("post argument: ", post)
     let{posts} = this.state;
     posts.push(post);
     this.setState({posts});
   }
   addFeed(address) {
+    console.log("I'm addFeed")
+    console.log("State:", this.state)
     this.setState({activeFeed: address});
+    console.log("After setstate State:", this.state)
     this.socket.emit('feed add', {address});
   }
 
   postSubscribe(feed) {
+    console.log("I'm postSubscribe")
+    console.log("State:", this.state)
+    console.log("feed argument in postSubscribe: ", feed)
     const feedId = feed.defaultFeed;
     this.setState({activeFeed: feed.defaultFeed});
-    this.setState({loggedin:true})
+    this.setState({loggedin:true});
+    console.log("After setstate State:", this.state)
     this.socket.emit('post subscribe', {feedId} );
   }
 
   userSignUp(user) {
+    console.log("I'm userSignUp")
+    console.log("State:", this.state)
     this.socket.emit('user signup', user);
     this.setState({loggedin:true})
   }
   userLogin(userCredentials) {
+    console.log("I'm userLogin")
+    console.log("State:", this.state)
     this.socket.emit('user login', userCredentials);
   }
   addPost(postContents) {
-    console.log(postContents);
+    console.log("I'm addPost")
+    console.log("State:", this.state)
+    console.log("Post contents in addPost: ", postContents);
     this.socket.emit('post add', postContents);
   }
 
