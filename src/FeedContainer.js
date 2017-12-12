@@ -9,17 +9,13 @@ class FeedContainer extends Component {
         <p>this is the feed</p>
         {this.props.isConnected ?  (() => {
          
-          var activeFeed = this.props.activeFeed
-          var feeds = this.props.feeds
-          var feedList = []
-          feedList.push(feeds.filter ((el ) => {
-            return el["id"] === activeFeed
-          }))
-            var feed = feedList[0]
-            if (feed.length !== 0) {
-              var postcode = feed[0].address
-              return <Feed postcode={postcode} />
-            }
+        var feeds = this.props.feeds
+        var feedList = feeds.map((feed, index) => {
+           return <Feed feed={feed} key={index} />
+        })
+        
+        return feedList
+
         })()
        : <Redirect to='/login' />}
       </div>
