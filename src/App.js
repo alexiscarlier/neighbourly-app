@@ -38,7 +38,6 @@ class App extends Component {
   onConnect() {
     this.setState({connected: true});
     this.socket.emit('feed subscribe');
-    console.log("on connect", this.state);
   }
   onDisconnect() {
     this.setState({
@@ -48,7 +47,6 @@ class App extends Component {
       connected: false,
       loggedin: false});
       // this.setState({loggedin:false});
-      console.log("on disconect", this.state);
   }
 
   onAddFeed(feed) {
