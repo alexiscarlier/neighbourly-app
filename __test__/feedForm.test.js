@@ -21,13 +21,13 @@ describe("<FeedForm />", () => {
     expect(result).toEqual(<input type="text" name="feedName" />);
   });
 
-  // test('should not be call onSubmit when submitting empty form', () => {
-  // const onSubmit = jest.fn();
-  // const wrapper = shallow(<FeedForm onSubmit={onSubmit}/>);
-  // const result = wrapper.find('input').last();
-  // result.simulate('submit')
-  // expect(onSubmit).not.toHaveBeenCalled()
-  // });
+  test('should not be call onSubmit when submitting empty form', () => {
+  const onSubmit = jest.fn();
+  const wrapper = shallow(<FeedForm onSubmit={onSubmit}/>);
+  const result = wrapper.find('input').last();
+  result.simulate('submit')
+  expect(onSubmit).not.toHaveBeenCalled()
+  });
 
   // describe('#onSubmit', () => {
   //   test('it prevents the page from reloading and calls userSignUp function', () => {
