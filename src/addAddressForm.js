@@ -4,22 +4,27 @@ class AddAddressForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      feedAddress: {
-
-      }
+      streetNumber: "",
+      streetName: "",
+      postcode: ""
     };
   }
   onSubmit(e){
     const feedAddress = this.state;
     this.props.addFeedAddress(feedAddress);
     this.setState({
-      feedAddress: ""
+      streetNumber: "",
+      streetName: "",
+      postcode: ""
     });
     e.preventDefault();
   }
   onChange(e) {
     this.setState({
-      [e.target.address]: e.target.value
+      [e.target.address]: e.target.value,
+      streetNumber: document.getElementById("street_number").value,
+      streetName: document.getElementById("route").value,
+      postcode: document.getElementById("postal_code").value
     });
   }
   render() {
