@@ -4,7 +4,9 @@ class AddAddressForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      address: ""
+      address: {
+
+      }
     };
   }
   onSubmit(e){
@@ -23,10 +25,35 @@ class AddAddressForm extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit.bind(this)}>
-          <input type="text" name="feedAddress" onChange={this.onChange.bind(this)} value={this.state.address}/>
-          // <input type="submit" name="submit" />
-        </form>
+        <form id="signup-form" onSubmit={this.onSubmit.bind(this)} onChange={this.onChange.bind(this)}>
+          <h1>Add Address</h1>
+
+            <input
+              id="autocomplete"
+              name="address"
+              type="text"
+              placeholder="Enter your address"
+            />
+            <input
+              id="street_number"
+              name="streetNumber"
+              placeholder="Number"
+              disabled="true"
+            />
+            <input
+              id="route"
+              name="streetName"
+              placeholder="Street"
+              disabled="true"
+            />
+            <input
+              id="postal_code"
+              name="postcode"
+              placeholder="Postcode"
+              disabled="true"
+            />
+            <input type="submit" value="Submit" />
+        </form> }
       </div>
     )
   }
