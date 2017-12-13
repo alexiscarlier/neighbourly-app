@@ -7,7 +7,7 @@ import FeedContainer from './FeedContainer';
 import MainMenu from './MainMenu';
 import PostContainer from './PostContainer';
 import Socket from './socket.js';
-import FeedForm from './FeedForm';
+import FeedForm from './feedForm';
 
 
 import {
@@ -47,7 +47,7 @@ class App extends Component {
       loggedin:true
         });
     this.socket.emit('feed subscribe');
-    this.postSubscribe();
+    this.postSubscribe(user.defaultFeed);
   }
   onDisconnect() {
     this.setState({
@@ -55,25 +55,26 @@ class App extends Component {
       activeFeed: null,
       feeds: [],
       connected: false,
-      loggedin: false});
+      loggedin: false
+    });
   }
   onAddFeed(feed) {
     let{feeds} = this.state;
     feeds.push(feed);
     this.setState({feeds});
-
   }
+
   onAddPost(post) {
     let{posts} = this.state;
     posts.push(post);
     this.setState({posts});
   }
+
   addFeed(name) {
     this.socket.emit('feed add', name);
   }
 
-  postSubscribe() {
-    let feedId = this.state.activeFeed    
+  postSubscribe(feedId) {
     this.socket.emit('post subscribe', {feedId} );  
   }
 
@@ -86,6 +87,19 @@ class App extends Component {
   }
   addPost(postContents) {
     this.socket.emit('post add', postContents);
+  }
+
+  getActiveFeed() {
+    return this.state.activeFeed
+  }
+
+  setActiveFeed(feedId) {
+    this.socket.emit('post unsubscribe');  
+    this.setState({
+      posts: [],
+      activeFeed: feedId,
+    })
+    this.postSubscribe(feedId)
   }
 
   render() {
@@ -105,10 +119,19 @@ class App extends Component {
 
                 <Route path="/feeds" render={(props) => (
                         <div>
-                        <FeedForm {...props} key="feedForm" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />
-                        <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                <FeedForm {...props} key="feedForm" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />
+                <FeedContainer {...props}
+                  key="feedContainer"
+                  isConnected={this.state.loggedin}
+                  feeds={this.state.feeds}
+                  setActiveFeed={this.setActiveFeed.bind(this)} 
+                // getActiveFeed={this.state.getActiveFeed.bind(this)} 
+                />
                         <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
-                        <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
+                <NewPost {...props}
+                  key="newPost"
+                  getActiveFeed={this.getActiveFeed.bind(this)}
+                  addPost={this.addPost.bind(this)} />
                         </div>
                       )}/>
               </div>
