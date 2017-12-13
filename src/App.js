@@ -24,6 +24,7 @@ class App extends Component {
       activeFeed: null,
       feeds: [],
       posts: [],
+      feedAddresses: [],
       connected: false,
       loggedin: false
     };
@@ -45,6 +46,7 @@ class App extends Component {
       posts: [],
       activeFeed: null,
       feeds: [],
+      feedAddresses: [],
       connected: false,
       loggedin: false});
   }
@@ -53,6 +55,12 @@ class App extends Component {
     let{feeds} = this.state;
     feeds.push(feed);
     this.setState({feeds});
+  }
+
+  onAddFeedAddress(feedAddress){
+    let{feedAddresses} = this.state;
+    feedAddresses.push(feedAddress);
+    this.setState({feedAddresses});
   }
 
   addFeed(address) {
@@ -76,6 +84,10 @@ class App extends Component {
   }
   addPost(postContents) {
     this.socket.emit('post add', postContents);
+  }
+
+  addFeedAddress(feedAddress){
+    this.socket.emit('feedAddress add', {feedAddress});
   }
 
   render() {
