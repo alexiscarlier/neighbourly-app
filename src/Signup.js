@@ -38,62 +38,98 @@ class Signup extends Component {
   }
   render() {
     return (
-      <div>
-{ this.props.isConnected ? <Redirect to='/feeds' /> :
-      <form id="signup-form" onSubmit={this.onSubmit.bind(this)} onChange={this.onChange.bind(this)}>
-        <h1>Sign-Up</h1>
-       
-          <input
-            id="autocomplete"
-            name="address"
-           
-            type="text"
-            placeholder="Enter your address"
-          /> 
-          <input
-            id="street_number"
-            name="streetNumber"
-            placeholder="Number"
-            disabled="true"
-          />
-          <input
-            id="route"
-            name="streetName"
-            placeholder="Street"
-            disabled="true"
-          />
-          <input
-            id="postal_code"
-            name="postcode"
-            placeholder="Postcode"
-            disabled="true"
-          />
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.username}
-            placeholder="Username"
-            required
-          />
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={this.state.email}
-            required
-            placeholder="Email"
-          />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={this.state.password}
-            placeholder="Password"
-            required
-          />
-          <input type="submit" value="Submit" />
-    </form> }
+      <div className ="container">
+          { this.props.isConnected ? <Redirect to='/feeds' /> :
+        <div className="row">
+          <div className="col s12 m6 push-m3 card-panel hoverable signup-box">
+            <form id="signup-form" onSubmit={this.onSubmit.bind(this)} onChange={this.onChange.bind(this)}>
+              <div className="row">
+                <div className="col s12">
+                  <div className="input-field">
+                    <input
+                      id="autocomplete"
+                      name="address"
+                      type="text"
+                    />
+                  </div>
+                  <div className="input-field">
+                    <input
+                      id="street_number"
+                      name="streetNumber"
+                      disabled="true"
+                    />
+                    <label className="active" htmlFor="streetNumber">
+                    <i className="material-icons prefix">add_location</i>
+                  </label>
+                  </div>
+                  <div className="input-field">
+                    <input
+                      id="route"
+                      name="streetName"
+                      disabled="true"
+                    />
+                    <label className="active" htmlFor="route">
+                        <i className="material-icons prefix">add_location</i>
+                    </label>
+                  </div>
+                  <div className="input-field">
+                    <input
+                      id="postal_code"
+                      name="postcode"
+                      disabled="true"
+                    />
+                    <label className="active" htmlFor="postal_code">
+                        <i className="material-icons prefix">add_location</i>
+                    </label>
+                  </div>
+                  <div className="input-field">
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      value={this.state.username}
+                      placeholder="Username"
+                      required
+                    />
+                    <label className="active" htmlFor="username">
+                      <i className="material-icons">person</i>
+                    </label>
+                  </div>
+                  <div className="input-field">
+                    <input
+                      type="text"
+                      id="email"
+                      name="email"
+                      value={this.state.email}
+                      placeholder="Email"
+                      required
+                    />
+                    <label className="active" htmlFor="email">
+                      <i className="material-icons prefix">email</i>
+                    </label>
+                  </div>
+                  <div className="input-field">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      value={this.state.password}
+                      placeholder="Password"
+                      required
+                    />
+                    <label className="active" htmlFor="password">
+                    <i className="material-icons prefix">lock</i>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <button className="btn waves-effect waves-light red lighten-2" type="submit" value="Log In">Sign Up
+                <i className="material-icons right">send</i>
+              </button>
+            </form>
+            <p>or <a href="/login">log in</a> if you have an account</p>
+          </div>
+        </div>}
       </div>
     );
   }
