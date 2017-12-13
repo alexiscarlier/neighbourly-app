@@ -93,27 +93,29 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <header>
-              <div className="container">
-                <div className="row">
-                  <div className="col s12 m9 l9 push-m3 push-l3">
-                    <MainMenu isConnected={this.state.loggedin}/>
-                    <Route path='/login' render={(props) => (
-                      <Login {...props} key="login" isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
-                    )}/>
+            <div class="wrapper">
+              <header>
+                      <MainMenu isConnected={this.state.loggedin}/>
+                <div className="container">
+                  <div className="row">
+                    <div className="col s12 m9 l9 push-m3 push-l3">
+                      <Route path='/login' render={(props) => (
+                        <Login {...props} key="login" isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
+                      )}/>
 
-                    <Route path="/signup" render={(props) => (
-                      <Signup {...props} key="signup" isConnected={this.state.loggedin} userSignUp={this.userSignUp.bind(this)} />
-                    )}/>
+                      <Route path="/signup" render={(props) => (
+                        <Signup {...props} key="signup" isConnected={this.state.loggedin} userSignUp={this.userSignUp.bind(this)} />
+                      )}/>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </header>
+              </header>
+            </div>
               <Route path="/feeds" render={(props) => (
                 <div >
                   <main>
                       <div >
-                        <ul id="nav-mobile" className="side-nav fixed" >
+                        <ul className="side-nav fixed" >
                           <div className="container">
                             <li>
                               <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
@@ -124,22 +126,28 @@ class App extends Component {
                         <div className="container">
                           <div className="row">
                             <div className="col s12 m9 l9 push-m3 push-l3">
-                            <h5> THIS IS THE POST CONTAINER </h5>
-                              <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
-                            </div>
+                              <div className="card">
+                                <h5> THIS IS THE POST CONTAINER </h5>
+                                  <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
+                                </div>
+                              </div>
                           </div>
                         </div>
                       </div>
                   </main>
-                  <footer>
+                  {/* <footer class="page-footer"> */}
                     <div className="container">
                       <div className="row">
                         <div className="col s12 m9 l9 push-m3 push-l3">
-                          <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
+                          <div className="card">
+                            <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </footer>
+                    <div className="footer-copyright">
+                    </div>
+                  {/* </footer> */}
                 </div>
               )}/>
           </div>
