@@ -47,7 +47,7 @@ class App extends Component {
       loggedin:true
         });
     this.socket.emit('feed subscribe');
-    this.postSubscribe();
+    this.postSubscribe(user.defaultFeed);
   }
   onDisconnect() {
     this.setState({
@@ -55,25 +55,26 @@ class App extends Component {
       activeFeed: null,
       feeds: [],
       connected: false,
-      loggedin: false});
+      loggedin: false
+    });
   }
   onAddFeed(feed) {
     let{feeds} = this.state;
     feeds.push(feed);
     this.setState({feeds});
-
   }
+
   onAddPost(post) {
     let{posts} = this.state;
     posts.push(post);
     this.setState({posts});
   }
+
   addFeed(name) {
     this.socket.emit('feed add', name);
   }
 
-  postSubscribe() {
-    let feedId = this.state.activeFeed    
+  postSubscribe(feedId) {
     this.socket.emit('post subscribe', {feedId} );  
   }
 
@@ -86,6 +87,19 @@ class App extends Component {
   }
   addPost(postContents) {
     this.socket.emit('post add', postContents);
+  }
+
+  getActiveFeed() {
+    return this.state.activeFeed
+  }
+
+  setActiveFeed(feedId) {
+    this.socket.emit('post unsubscribe');  
+    this.setState({
+      posts: [],
+      activeFeed: feedId,
+    })
+    this.postSubscribe(feedId)
   }
 
   render() {
@@ -118,7 +132,13 @@ class App extends Component {
                         <ul className="side-nav fixed" >
                           <div className="container">
                             <li>
-                              <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                            <FeedContainer {...props}
+                              key="feedContainer"
+                              isConnected={this.state.loggedin}
+                              feeds={this.state.feeds}
+                              setActiveFeed={this.setActiveFeed.bind(this)} 
+                            // getActiveFeed={this.state.getActiveFeed.bind(this)} 
+                            />
                               <FeedForm {...props} key="feedForm" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />                            
                             </li>
                           </div>
@@ -140,7 +160,7 @@ class App extends Component {
                       <div className="row"> */}
                         {/* <div className="col s12 m9 l9 push-m3 push-l3"> */}
                           {/* <div className="card"> */}
-                            <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
+                            <NewPost {...props} key="newPost" getActiveFeed={this.getActiveFeed.bind(this)} addPost={this.addPost.bind(this)}/>
                           {/* </div> */}
                         {/* </div> */}
                       {/* </div>

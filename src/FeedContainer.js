@@ -10,9 +10,11 @@ class FeedContainer extends Component {
       <div>
         {this.props.isConnected ?  (() => {
           var feeds = this.props.feeds
-          console.log(feeds)
         var feedList = feeds.map((feed, index) => {
-           return <Feed feed={feed} key={index} />
+          return <Feed
+            feed={feed}
+            key={index}
+            setActiveFeed={this.props.setActiveFeed} />
         })
 
         return feedList

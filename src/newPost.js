@@ -13,21 +13,20 @@ class NewPost extends Component {
   }
 
   onSubmit(e) {
-
     const postContents = this.state;
-    e.preventDefault();
     this.props.addPost(postContents);
     this.setState({
-        name: "",
-        text: "",
+      name: "",
+      text: "",
     });
+    e.preventDefault();
   }
 
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
       feed: {
-        id: this.props.activeFeed
+        id: this.props.getActiveFeed()
       }
     });
   }
