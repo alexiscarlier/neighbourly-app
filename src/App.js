@@ -24,6 +24,7 @@ class App extends Component {
       activeFeed: null,
       feeds: [],
       posts: [],
+      feedAddresses: [],
       connected: false,
       loggedin: false
     };
@@ -46,6 +47,7 @@ class App extends Component {
       posts: [],
       activeFeed: null,
       feeds: [],
+      feedAddresses: [],
       connected: false,
       loggedin: false});
   }
@@ -54,11 +56,19 @@ class App extends Component {
     feeds.push(feed);
     this.setState({feeds});
   }
+
+  onAddFeedAddress(feedAddress){
+    let{feedAddresses} = this.state;
+    feedAddresses.push(feedAddress);
+    this.setState({feedAddresses});
+  }
+
   onAddPost(post) {
     let{posts} = this.state;
     posts.push(post);
     this.setState({posts});
   }
+
   addFeed(address) {
     this.setState({activeFeed: address});
     this.socket.emit('feed add', {address});
@@ -71,6 +81,11 @@ class App extends Component {
     this.socket.emit('post subscribe', {feedId} );
   }
 
+  postSwitch(feedId) {
+    this.socket.emit('post unsubscribe')
+    this.socket.emit('post subscribe', {feedId})
+  }
+
   userSignUp(user) {
     this.socket.emit('user signup', user);
     this.setState({loggedin:true})
@@ -80,6 +95,10 @@ class App extends Component {
   }
   addPost(postContents) {
     this.socket.emit('post add', postContents);
+  }
+
+  addFeedAddress(feedAddress){
+    this.socket.emit('feedAddress add', {feedAddress});
   }
 
   render() {
@@ -101,9 +120,10 @@ class App extends Component {
 
                 <Route path="/feeds" render={(props) => (
                         <div>
-                        <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
+                        <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} postSwitch={this.postSwitch.bind(this)} activeFeed={this.state.activeFeed} />
                         <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
                         <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
+                        <FeedAddress {...props} key="feedAddress" feedAddresses={this.state.feedAddresses} addFeedAddress={this.addFeedAddress.bind(this)} />
                         </div>
                       )}/>
               </div>
