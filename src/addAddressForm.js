@@ -4,13 +4,13 @@ class AddAddressForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      address: {
+      feedAddress: {
 
       }
     };
   }
   onSubmit(e){
-    const address = this.state;
+    const feedAddress = this.state;
     this.props.addFeedAddress(feedAddress);
     this.setState({
       feedAddress: ""
