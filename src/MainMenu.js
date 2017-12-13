@@ -5,14 +5,15 @@ class MainMenu extends Component {
     return (
       <div>
       <ul>
-          <li><a href="/feeds">Feeds</a></li>
+          
             
               { !this.props.isConnected ?
               <div>
+                <li><a href="/feeds">Feeds</a></li>
                 <li><a href="/login">Login</a></li>
                 <li><a href="/signup">Signup</a></li>
               </div>: 
-              <p>Welcome to your feed!</p>
+              <li><a href="/logoff">log out</a></li>
               }
             
         
