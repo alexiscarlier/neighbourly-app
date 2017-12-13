@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import AddAddressForm from '../src/AddAddressForm';
+import FeedAddress from '../src/feedAddress';
 
 const renderer = new ShallowRenderer();
 renderer.render(<AddAddressForm />);
@@ -14,7 +15,7 @@ describe("<AddAddressForm />", () => {
   test("form contains expected content ", () => {
     const render = renderer.getRenderOutput();
     const result = render.props.children.props["children"][0]
-    expect(result.props.type).toEqual("text");
+    expect(result).toEqual(<h1>Add Address</h1>);
   });
 
   test('should not be call onSubmit when submitting empty form', () => {
@@ -29,7 +30,7 @@ describe("<AddAddressForm />", () => {
   describe('#addFeedAddress', () => {
     test('it prevents the page from reloading and calls addFeedAddress function', () => {
       const addFeedAddress = jest.fn()
-      const wrapper = mount(<AddAddressForm addFeedAddress={addFeedAddress}/> );
+      const wrapper = shallow(<AddAddressForm addFeedAddress={addFeedAddress}/> );
       const preventDefault = jest.fn()
       wrapper.find('form').first().simulate('submit', {preventDefault})
       expect(preventDefault).toHaveBeenCalled();
