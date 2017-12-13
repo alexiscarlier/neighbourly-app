@@ -36,16 +36,34 @@ class Login extends Component {
                 <div className="row">
                   <div className="col s12">
                     <div className="input-field">
-                      <input type="text" id="email" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required/>
-                      <label className="active" htmlFor="email"><i className="material-icons prefix">email</i></label>
+                      <input 
+                      type="text" 
+                      id="email" 
+                      name="email" 
+                      onChange={this.onChange.bind(this)} 
+                      value={this.state.email} 
+                      required
+                      />
+                      <label className="active" htmlFor="email">
+                        <i className="material-icons prefix">email</i>
+                      </label>
                     </div>
                     <div className="input-field">
-                      <input type="password" id="password" name="password" onChange={this.onChange.bind(this)} value={this.state.password}required/>
-                      <label className="active" htmlFor="email"><i className="material-icons prefix">lock</i></label>
+                      <input 
+                      type="password" 
+                      id="password" 
+                      name="password" 
+                      onChange={this.onChange.bind(this)} 
+                      value={this.state.password}
+                      required
+                      />
+                      <label className="active" htmlFor="email">
+                        <i className="material-icons prefix">lock</i>
+                      </label>
                     </div>
                   </div>
                 </div>
-                <button className="btn waves-effect waves-light" type="submit" value="Log In">Log In<i className="material-icons right">send</i></button>
+                <button className="btn waves-effect waves-light red lighten-2" type="submit" value="Log In">Log In<i className="material-icons right">send</i></button>
               </form>
             <p>or <a href="/signup">create a new account</a></p>
           </div>
