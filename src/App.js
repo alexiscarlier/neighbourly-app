@@ -8,7 +8,7 @@ import FeedContainer from './FeedContainer';
 import MainMenu from './MainMenu';
 import PostContainer from './PostContainer';
 import Socket from './socket.js';
-import FeedForm from './feedForm';
+import FeedForm from './FeedForm';
 // import Feed from './Feed.js'
 
 
