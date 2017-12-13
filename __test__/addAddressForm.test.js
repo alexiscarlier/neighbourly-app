@@ -13,8 +13,6 @@ describe("<AddAddressForm />", () => {
 
   test("form contains expected content ", () => {
     const render = renderer.getRenderOutput();
-    console.log('-------------------------')
-    console.log(render.props.children.props.children.props.type)
     const result = render.props.children.props.children
     expect(result.props.type).toEqual("text");
   });
