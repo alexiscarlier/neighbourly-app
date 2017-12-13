@@ -9,7 +9,9 @@ const result = renderer.getRenderOutput();
 
 describe("<FeedContainer />", () => {
     test("renders <Feed /> if feeds not empty", () => {
+        
         expect(result.type).toBe('div');
-        expect(result.props.children[0]).toEqual(<p>this is the feed</p>)
+        console.log(result.props.children[0].props.feed)
+        expect(result.props.children[0].props.feed).toEqual(feeds[0])
     });
 });

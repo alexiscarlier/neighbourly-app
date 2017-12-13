@@ -20,8 +20,9 @@ describe("<Login />", () => {
     });
 
     test("form contains expected content ", () => {
-      const header = result.props.children.props.children[0].props.children[0];
-      expect(header).toEqual(<h1>Log in</h1>);
+      console.log(result.props.children.props.children.type)
+      const header = result.props.children.props.children.type
+      expect(header).toEqual('div');
     });
   });
 
