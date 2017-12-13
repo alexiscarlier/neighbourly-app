@@ -117,6 +117,7 @@ class App extends Component {
                         <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} postSwitch={this.postSwitch.bind(this)} activeFeed={this.state.activeFeed} />
                         <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
                         <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
+                        <FeedAddress {...props} key="feedAddress" feedAddresses={this.state.feedAddresses} addFeedAddress={this.addFeedAddress.bind(this)} />
                         </div>
                       )}/>
               </div>
