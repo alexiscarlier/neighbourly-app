@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 
 class NewPost extends Component {
   constructor(props){
@@ -8,23 +7,28 @@ class NewPost extends Component {
       name: "",
       text: "",
       feed: {
-        id: props.activeFeed
+        id: ""
       }
     };
   }
 
   onSubmit(e) {
-    this.setState({
-      contents: ""
-    });
+
     const postContents = this.state;
     e.preventDefault();
     this.props.addPost(postContents);
+    this.setState({
+        name: "",
+        text: "",
+    });
   }
 
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      feed: {
+        id: this.props.activeFeed
+      }
     });
   }
 
@@ -33,8 +37,9 @@ class NewPost extends Component {
       <div>
         <form id="new-post" onSubmit={this.onSubmit.bind(this)}>
           <h1>Create Post</h1>
-          <input type="text" id="title" name="title" onChange={this.onChange.bind(this)} value={this.state.contents} required placeholder="Enter a title"/>
-          <textarea form="new-post" id="text" name="text" onChange={this.onChange.bind(this)} value={this.state.contents} required placeholder="Enter your message"></textarea>
+          <input type="hidden" id="feedId" name="feedId" value={this.state.feed.id} />
+          <input type="text" id="title" name="name" onChange={this.onChange.bind(this)} value={this.state.name} required placeholder="Enter a title"/>
+          <textarea form="new-post" id="text" name="text" onChange={this.onChange.bind(this)} value={this.state.text} required placeholder="Enter your message"></textarea>
           <input type="submit" value="Create Post" />
         </form>
       </div>
