@@ -100,11 +100,21 @@ class App extends Component {
                       )}/>
 
                 <Route path="/feeds" render={(props) => (
-                        <div>
-                        <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
-                        <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
-                        <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
+                      <div>
+                        <ul id="nav-mobile" className="side-nav fixed" >
+                          <li>
+                            <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />                            
+                          </li>
+                        </ul>
+                        <div className="container">
+                          <div className="row">
+                            <div className="col s12 m9 l9 push-m3 push-l3">
+                              <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
+                              <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
+                            </div>
+                          </div>
                         </div>
+                      </div>
                       )}/>
               </div>
             </Router>
