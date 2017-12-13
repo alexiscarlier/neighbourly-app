@@ -16,4 +16,21 @@ describe("<AddAddressForm />", () => {
     const result = render.props.children.props.children
     expect(result.props.type).toEqual("text");
   });
+
+  test('should not be call onSubmit when submitting empty form', () => {
+  const onSubmit = jest.fn();
+  const wrapper = shallow(<AddAddressForm onSubmit={onSubmit}/>);
+  const result = wrapper.find('input').last();
+  result.simulate('submit')
+  expect(onSubmit).not.toHaveBeenCalled()
+  });
 });
+
+
+// test('should not be call onSubmit when submitting empty form', () => {
+// const onSubmit = jest.fn();
+// const wrapper = shallow(<FeedForm onSubmit={onSubmit}/>);
+// const result = wrapper.find('input').last();
+// result.simulate('submit')
+// expect(onSubmit).not.toHaveBeenCalled()
+// });
