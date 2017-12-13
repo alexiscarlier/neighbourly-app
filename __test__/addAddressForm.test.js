@@ -25,4 +25,28 @@ describe("<AddAddressForm />", () => {
   expect(onSubmit).not.toHaveBeenCalled()
   });
 
+
+  describe('#addFeedAddress', () => {
+    test('it prevents the page from reloading and calls addFeedAddress function', () => {
+      const addFeedAddress = jest.fn()
+      const wrapper = mount(<AddAddressForm addFeedAddress={addFeedAddress}/> );
+      const preventDefault = jest.fn()
+      wrapper.find('form').first().simulate('submit', {preventDefault})
+      expect(preventDefault).toHaveBeenCalled();
+      expect(addFeedAddress).toHaveBeenCalled();
+    });
+  });
+
 });
+
+
+// describe('#addFeed', () => {
+//   test('it prevents the page from reloading and calls addFeed function', () => {
+//     const addFeed = jest.fn()
+//     const wrapper = mount(<FeedForm addFeed={addFeed}/> );
+//     const preventDefault = jest.fn()
+//     wrapper.find('form').first().simulate('submit', {preventDefault})
+//     expect(preventDefault).toHaveBeenCalled();
+//     expect(addFeed).toHaveBeenCalled();
+//   });
+// });
