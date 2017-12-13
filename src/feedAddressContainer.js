@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FeedAddress from '../src/FeedAddress';
+import FeedAddress from '../src/feedAddress';
 import AddAddressForm from '../src/addAddressForm'
 
 
@@ -7,7 +7,6 @@ class FeedAddressContainer extends Component {
   render () {
     return (
       <div>
-        <p>Here are the addresses that can see the active feed</p>
         {(() => {
 
         var feedAddresses = this.props.feedAddresses
