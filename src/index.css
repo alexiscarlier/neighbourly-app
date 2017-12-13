@@ -4,8 +4,38 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .login-box {
   margin: 100px
+}
+
+/*
+#street_number, #route, #postal_code {
+  margin: 5px;
+  border: none;
+  border-bottom: solid 1px rgb(173, 173, 173);
+  outline: none;
+} */
+
+#main {
+  flex: 1 0 auto;
+}
+
+.side-nav{
+  top: 65px;
+  width: 250px;
+}
+
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* padding-left: 300px; */
+  background-color: white;
+  
 }

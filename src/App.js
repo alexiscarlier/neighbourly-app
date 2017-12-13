@@ -7,7 +7,7 @@ import FeedContainer from './FeedContainer';
 import MainMenu from './MainMenu';
 import PostContainer from './PostContainer';
 import Socket from './socket.js';
-import FeedForm from './feedForm';
+import FeedForm from './FeedForm';
 
 
 import {
@@ -106,36 +106,72 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-              <div>
-                <MainMenu isConnected={this.state.loggedin}/>
-
-                <Route path='/login' render={(props) => (
+          <div>
+            <div class="wrapper">
+              <header>
+                      <MainMenu isConnected={this.state.loggedin}/>
+                <div className="container">
+                  <div className="row">
+                    <div className="col s12 m9 l9 push-m3 push-l3">
+                      <Route path='/login' render={(props) => (
                         <Login {...props} key="login" isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
                       )}/>
 
-                <Route path="/signup" render={(props) => (
+                      <Route path="/signup" render={(props) => (
                         <Signup {...props} key="signup" isConnected={this.state.loggedin} userSignUp={this.userSignUp.bind(this)} />
                       )}/>
-
-                <Route path="/feeds" render={(props) => (
-                        <div>
-                <FeedForm {...props} key="feedForm" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />
-                <FeedContainer {...props}
-                  key="feedContainer"
-                  isConnected={this.state.loggedin}
-                  feeds={this.state.feeds}
-                  setActiveFeed={this.setActiveFeed.bind(this)} 
-                // getActiveFeed={this.state.getActiveFeed.bind(this)} 
-                />
-                        <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
-                <NewPost {...props}
-                  key="newPost"
-                  getActiveFeed={this.getActiveFeed.bind(this)}
-                  addPost={this.addPost.bind(this)} />
+                    </div>
+                  </div>
+                </div>
+              </header>
+            </div>
+              <Route path="/feeds" render={(props) => (
+                <div >
+                  <main>
+                      <div >
+                        <ul className="side-nav fixed" >
+                          <div className="container">
+                            <li>
+                            <FeedContainer {...props}
+                              key="feedContainer"
+                              isConnected={this.state.loggedin}
+                              feeds={this.state.feeds}
+                              setActiveFeed={this.setActiveFeed.bind(this)} 
+                            // getActiveFeed={this.state.getActiveFeed.bind(this)} 
+                            />
+                              <FeedForm {...props} key="feedForm" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />                            
+                            </li>
+                          </div>
+                        </ul>
+                        <div className="container">
+                          <div className="row">
+                            <div className="col s12 m9 l9 push-m3 push-l3">
+                              <div className="card">
+                                <h5> THIS IS THE POST CONTAINER </h5>
+                                  <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
+                                </div>
+                              </div>
+                          </div>
                         </div>
-                      )}/>
-              </div>
-            </Router>
+                      </div>
+                  </main>
+                          <footer className="footer">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col s12 m9 l9 push-m3 push-l3">
+                            <div className="card">
+                              <NewPost {...props} key="newPost" getActiveFeed={this.getActiveFeed.bind(this)} addPost={this.addPost.bind(this)}/>
+                            </div> 
+                            <div className="footer-copyright">
+                            </div>
+                        </div> 
+                      </div>
+                    </div>
+                          </footer>
+                </div>
+              )}/>
+          </div>
+        </Router>
       </div>
     );
   }
