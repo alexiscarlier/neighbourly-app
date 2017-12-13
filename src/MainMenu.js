@@ -11,7 +11,7 @@ class MainMenu extends Component {
               { !this.props.isConnected ?
               <div>
                 <li><a href="/login">Log In</a></li>
-                <li><a href="/signup">Signup</a></li>
+                <li><a href="/signup">Sign Up</a></li>
               </div>: 
               <div>
                 <li><a href="/login">Log Off</a></li>
