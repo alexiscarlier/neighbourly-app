@@ -7,8 +7,8 @@ class FeedContainer extends Component {
   render () {
     return (
       <div>
-        <p>this is the feed</p>
-        {this.props.isConnected ?  (() => {
+        
+         {(() => {
 
         var feeds = this.props.feeds
         var feedList = feeds.map((feed, index) => {
@@ -17,8 +17,8 @@ class FeedContainer extends Component {
 
         return feedList
 
-        })()
-       : <Redirect to='/login' />}
+        })()}
+       
        <FeedForm />
       </div>
     )
