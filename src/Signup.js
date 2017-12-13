@@ -50,7 +50,7 @@ class Signup extends Component {
                       id="autocomplete"
                       name="address"
                       type="text"
-                    /> 
+                    />
                   </div>
                   <div className="input-field">
                     <input
