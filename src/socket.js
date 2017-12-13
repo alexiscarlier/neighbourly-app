@@ -11,7 +11,7 @@ class Socket {
   message(e){
     try {
       const message = JSON.parse(e.data);
-      console.log(message)
+      console.log(message, e.data)
       this.ee.emit(message.name, message.data);
     }
     catch(err){
@@ -26,7 +26,7 @@ class Socket {
   }
   emit(name, data) {
     const message = JSON.stringify({name, data});
-    console.log(message)
+    console.log(message, data)
     this.ws.send(message);
   }
   open(e){

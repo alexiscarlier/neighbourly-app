@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddAddressForm from '../src/AddAddressForm'
+import AddAddressForm from '../src/addAddressForm'
 
 
 class FeedAddress extends Component {
@@ -10,7 +10,6 @@ class FeedAddress extends Component {
         {(() => {
 
         var feedAddresses = this.props.feedAddresses
-        console.log(feedAddresses)
 
         var feedAddressesList = feedAddresses.map((feedAddress) => {
            return feedAddress
