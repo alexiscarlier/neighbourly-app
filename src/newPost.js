@@ -10,14 +10,12 @@ class NewPost extends Component {
         id: ""
       }
     };
-    console.log(props.activeFeed)
   }
 
   onSubmit(e) {
 
     const postContents = this.state;
     e.preventDefault();
-    console.log("postContents after state clearing", postContents)
     this.props.addPost(postContents);
     this.setState({
         name: "",
@@ -37,7 +35,6 @@ class NewPost extends Component {
   render() {
     return(
       <div>
-      {console.log("this.props: ", this.props)}
         <form id="new-post" onSubmit={this.onSubmit.bind(this)}>
           <h1>Create Post</h1>
           <input type="hidden" id="feedId" name="feedId" value={this.state.feed.id} />
