@@ -6,10 +6,10 @@ class MainMenu extends Component {
       <nav className="teal">
         <div>
           <ul>
-            <li><a href="/feeds">Feeds</a></li>
               
               { !this.props.isConnected ?
               <div>
+                <li><a href="/feeds">Feeds</a></li>
                 <li><a href="/login">Log In</a></li>
                 <li><a href="/signup">Sign Up</a></li>
               </div>: 
