@@ -135,19 +135,19 @@ class App extends Component {
                         </div>
                       </div>
                   </main>
-                  {/* <footer class="page-footer"> */}
-                    <div className="container">
-                      <div className="row">
-                        <div className="col s12 m9 l9 push-m3 push-l3">
-                          <div className="card">
+                  <footer className="footer">
+                    {/* <div className="container">
+                      <div className="row"> */}
+                        {/* <div className="col s12 m9 l9 push-m3 push-l3"> */}
+                          {/* <div className="card"> */}
                             <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                          {/* </div> */}
+                        {/* </div> */}
+                      {/* </div>
+                    </div> */}
                     <div className="footer-copyright">
                     </div>
-                  {/* </footer> */}
+                  </footer>
                 </div>
               )}/>
           </div>

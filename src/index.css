@@ -25,8 +25,17 @@ body {
   flex: 1 0 auto;
 }
 
-
 .side-nav{
   top: 65px;
   width: 250px;
+}
+
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-left: 300px;
+  background-color: white;
+  
 }
