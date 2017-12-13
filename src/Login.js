@@ -28,16 +28,17 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="containter">
         { this.props.isConnected ? <Redirect to='/feeds' /> :
-        <div>
-        <form onSubmit={this.onSubmit.bind(this)}>
-          <h1>Log in</h1>
-          <input type="text" id="email" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required placeholder="Email"/>
-          <input type="password" id="password" name="password" onChange={this.onChange.bind(this)} value={this.state.password}required placeholder="Password"/>
-          <input type="submit" value="Log in" />
-        </form>
-      <p>or <a href="/signup">create a new account</a></p>
+        <div className="row">
+          <div className="col s12 m6 push-m3 card-panel hoverable">
+            <form onSubmit={this.onSubmit.bind(this)}>
+              <input type="text" id="email" name="email" onChange={this.onChange.bind(this)} value={this.state.email} required placeholder="Email"/>
+              <input type="password" id="password" name="password" onChange={this.onChange.bind(this)} value={this.state.password}required placeholder="Password"/>
+              <button class="btn waves-effect waves-light" type="submit" value="Log In">Log In<i class="material-icons right">send</i></button>
+            </form>
+            <p>or <a href="/signup">create a new account</a></p>
+          </div>
       </div>}
       </div>
     )
