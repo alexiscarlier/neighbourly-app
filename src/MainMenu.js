@@ -21,9 +21,9 @@ class MainMenu extends Component {
             <li><a href="/login">Log Off</a></li>
           </ul>
           }
-          <div class="right">
-            <a class="dropdown-button" href="#!" data-activates="dropdown1">
-              <i class="material-icons right">
+          <div className="right">
+            <a className="dropdown-button" href="#!" data-activates="dropdown1">
+              <i className="material-icons right">
                 menu
               </i>
             </a>

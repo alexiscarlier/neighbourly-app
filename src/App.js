@@ -8,7 +8,7 @@ import FeedContainer from './FeedContainer';
 import MainMenu from './MainMenu';
 import PostContainer from './PostContainer';
 import Socket from './socket.js';
-import $ from 'jquery';
+// import $ from 'jquery';
 // import Feed from './Feed.js'
 
 
