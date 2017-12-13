@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class MainMenu extends Component {
   render () {
     return (
+      <div class="navbar-fixed">
       <nav className="teal">
         <div>
           <ul>
@@ -20,6 +21,7 @@ class MainMenu extends Component {
           </ul> 
         </div>
       </nav>
+      </div>
     );
   }
 };
