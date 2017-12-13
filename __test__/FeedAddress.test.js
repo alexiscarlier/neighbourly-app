@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import FeedAddress from '../src/feedAddress';
 import ShallowRenderer from 'react-test-renderer/shallow';
+import AddAddressForm from '../src/AddAddressForm'
 
 
-const feedAddresses = {
-  address:{
+const feedAddresses = [
+  {address:{
     streetNumber:1,
     streetName:"Makers Street",
     postcode:"AL74BD"
-  }
-}
+  }}
+]
   
 const renderer = new ShallowRenderer();
 renderer.render(<FeedAddress feedAddresses={feedAddresses}/>);
