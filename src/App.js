@@ -90,9 +90,7 @@ class App extends Component {
         <Router>
               <div>
                 <MainMenu isConnected={this.state.loggedin}/>
-                {this.state.loggedin ? <a href="/" onClick={()=>{this.onDisconnect()}}>Log Off</a> :<hr /> }
-
-
+                
                 <Route path='/login' render={(props) => (
                         <Login {...props} key="login" isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
                       )}/>
@@ -103,7 +101,7 @@ class App extends Component {
 
                 <Route path="/feeds" render={(props) => (
                         <div>
-                        <FeedForm {...props} key="feedContainer" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />
+                        <FeedForm {...props} key="feedForm" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />
                         <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
                         <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
                         <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
