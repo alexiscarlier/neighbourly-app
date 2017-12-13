@@ -88,7 +88,7 @@ class App extends Component {
         <Router>
               <div>
                 <MainMenu isConnected={this.state.loggedin}/>
-                {this.state.loggedin ? <a href="/" onClick={()=>{this.onDisconnect()}}>Log Off</a> :<hr /> }
+                {this.state.loggedin ? <a href="/" onClick={()=>{this.onDisconnect()}}>Log Off</a> :<br/> }
 
 
                 <Route path='/login' render={(props) => (

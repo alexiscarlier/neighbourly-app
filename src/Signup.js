@@ -123,7 +123,7 @@ class Signup extends Component {
                   </div>
                 </div>
               </div>
-              <button className="btn waves-effect waves-light" type="submit" value="Log In">Sign Up
+              <button className="btn waves-effect waves-light red lighten-2" type="submit" value="Log In">Sign Up
                 <i className="material-icons right">send</i>
               </button>
             </form>
