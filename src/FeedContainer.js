@@ -4,6 +4,7 @@ import Feed from './Feed';
 // import { Redirect } from '../../../Library/Caches/typescript/2.6/node_modules/@types/react-router';
 import { Redirect } from 'react-router-dom';
 class FeedContainer extends Component {
+
   render () {
     return (
       <div>

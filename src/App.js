@@ -8,7 +8,7 @@ import MainMenu from './MainMenu';
 import PostContainer from './PostContainer';
 import Socket from './socket.js';
 import FeedForm from './feedForm';
-
+import FeedAddressContainer from './feedAddressContainer';
 
 import {
   BrowserRouter as Router,
@@ -23,6 +23,7 @@ class App extends Component {
       activeFeed: null,
       feeds: [],
       posts: [],
+      feedAddresses: [],
       connected: false,
       loggedin: false
     };  
@@ -36,32 +37,46 @@ class App extends Component {
     socket.on('user created, logged in', this.onLogin.bind(this));
     socket.on('login successful', this.onLogin.bind(this));
     socket.on('post add', this.onAddPost.bind(this));
+    socket.on('feedAddress add', this.onAddFeedAddress.bind(this));
   }
+
   onConnect() {
     this.setState({connected: true});
   }
 
-  onLogin(user){
+  onLogin(user) {
+    let feedId = user.defaultFeed
     this.setState({ 
-      activeFeed: user.defaultFeed,
+      activeFeed: feedId,
       loggedin:true
         });
     this.socket.emit('feed subscribe');
-    this.postSubscribe(user.defaultFeed);
+    this.socket.emit('feedAddress subscribe', {feedId});
+    this.postSubscribe(feedId);
   }
+
   onDisconnect() {
     this.setState({
       posts: [],
       activeFeed: null,
       feeds: [],
+      feedAddresses: [],
       connected: false,
       loggedin: false
     });
   }
+
   onAddFeed(feed) {
     let{feeds} = this.state;
     feeds.push(feed);
     this.setState({feeds});
+  }
+
+  onAddFeedAddress(feedAddress){
+    let{feedAddresses} = this.state;
+    feedAddresses.push(feedAddress);
+    this.setState({ feedAddresses });
+    console.log(this.state)
   }
 
   onAddPost(post) {
@@ -71,7 +86,7 @@ class App extends Component {
   }
 
   addFeed(name) {
-    this.socket.emit('feed add', name);
+    this.socket.emit('feed add', {name});
   }
 
   postSubscribe(feedId) {
@@ -82,9 +97,11 @@ class App extends Component {
     this.socket.emit('user signup', user);
     this.setState({loggedin:true})
   }
+
   userLogin(userCredentials) {
     this.socket.emit('user login', userCredentials);
   }
+
   addPost(postContents) {
     this.socket.emit('post add', postContents);
   }
@@ -94,12 +111,16 @@ class App extends Component {
   }
 
   setActiveFeed(feedId) {
-    this.socket.emit('post unsubscribe');  
+    this.socket.emit('post unsubscribe');
     this.setState({
       posts: [],
       activeFeed: feedId,
     })
     this.postSubscribe(feedId)
+  }
+  
+  addFeedAddress(feedAddress) {
+    this.socket.emit('feedAddress add', feedAddress);
   }
 
   render() {
@@ -119,7 +140,9 @@ class App extends Component {
 
                 <Route path="/feeds" render={(props) => (
                         <div>
-                <FeedForm {...props} key="feedForm" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />
+                <FeedForm {...props} key="feedForm"
+                  isConnected={this.state.loggedin}
+                  addFeed={this.addFeed.bind(this)} />
                 <FeedContainer {...props}
                   key="feedContainer"
                   isConnected={this.state.loggedin}
@@ -127,7 +150,14 @@ class App extends Component {
                   setActiveFeed={this.setActiveFeed.bind(this)} 
                 // getActiveFeed={this.state.getActiveFeed.bind(this)} 
                 />
-                        <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
+                <FeedAddressContainer {...props}
+                  key="feedAddress"
+                  getActiveFeed={this.getActiveFeed.bind(this)}                  
+                  feedAddresses={this.state.feedAddresses}
+                  addFeedAddress={this.addFeedAddress.bind(this)} />
+                <PostContainer {...props}
+                  key="postContainer"
+                  posts={this.state.posts} />
                 <NewPost {...props}
                   key="newPost"
                   getActiveFeed={this.getActiveFeed.bind(this)}

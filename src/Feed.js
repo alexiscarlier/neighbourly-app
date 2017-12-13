@@ -21,6 +21,8 @@ class Feed extends Component {
       >{this.props.feed.name}</button>
     );
   }
+
+
 };
 
 export default Feed;
