@@ -10,4 +10,12 @@ describe("<AddAddressForm />", () => {
     const result = renderer.getRenderOutput();
     expect(result.props.children.type).toBe('form');
   });
+
+  test("form contains expected content ", () => {
+    const renderer = new ShallowRenderer();
+    renderer.render(<AddAddressForm />);
+    const render = renderer.getRenderOutput();
+    const result = render.props.children.props["children"][0];
+    expect(result.props.type).toEqual("text");
+  });
 });
