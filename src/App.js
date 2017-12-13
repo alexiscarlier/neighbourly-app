@@ -8,7 +8,7 @@ import FeedContainer from './FeedContainer';
 import MainMenu from './MainMenu';
 import PostContainer from './PostContainer';
 import Socket from './socket.js';
-// import $ from 'jquery';
+import $ from 'jquery';
 // import Feed from './Feed.js'
 
 
@@ -38,6 +38,7 @@ class App extends Component {
     socket.on('login successful', this.postSubscribe.bind(this));
     socket.on('post add', this.onAddPost.bind(this));
     // $(".button-collapse").sideNav();
+    // $(".dropdown-button").dropdown();
   }
   onConnect() {
     this.setState({connected: true});
