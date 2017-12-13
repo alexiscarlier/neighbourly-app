@@ -25,7 +25,7 @@ class AddAddressForm extends Component {
   render() {
     return (
       <div>
-        <form id="signup-form" onSubmit={this.onSubmit.bind(this)} onChange={this.onChange.bind(this)}>
+        <form id="address-form" onSubmit={this.onSubmit.bind(this)} onChange={this.onChange.bind(this)}>
           <h1>Add Address</h1>
 
             <input
@@ -53,7 +53,7 @@ class AddAddressForm extends Component {
               disabled="true"
             />
             <input type="submit" value="Submit" />
-        </form> }
+        </form>
       </div>
     )
   }
