@@ -43,6 +43,12 @@ input[type="text"]:focus {
   border-bottom: solid 1px rgb(48, 47, 47);
 }
 
+*/
+.login-box {
+  margin: 100px
+}
+
+/*
 #street_number, #route, #postal_code {
   margin: 5px;
   border: none;

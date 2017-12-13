@@ -28,10 +28,10 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="containter">
+      <div className="container">
         { this.props.isConnected ? <Redirect to='/feeds' /> :
           <div className="row">
-            <div className="col s12 m6 push-m3 card-panel hoverable">
+            <div className="col s12 m6 push-m3 card-panel hoverable login-box">
               <form onSubmit={this.onSubmit.bind(this)}>
                 <div className="row">
                   <div className="col s12">
