@@ -9,6 +9,7 @@ import MainMenu from './MainMenu';
 import PostContainer from './PostContainer';
 import Socket from './socket.js';
 import FeedAddress from './feedAddress';
+import FeedForm from './FeedForm';
 // import Feed from './Feed.js'
 
 
@@ -29,9 +30,10 @@ class App extends Component {
       connected: false,
       loggedin: false
     };
+    this.socket = new Socket();
   }
   componentDidMount(){
-    let socket = this.socket = new Socket();
+    let socket = this.socket
     socket.on('connect', this.onConnect.bind(this));
     socket.on('disconnect', this.onDisconnect.bind(this));
     socket.on('feed add', this.onAddFeed.bind(this));
@@ -110,9 +112,7 @@ class App extends Component {
         <Router>
               <div>
                 <MainMenu isConnected={this.state.loggedin}/>
-                {this.state.loggedin ? <a href="/" onClick={()=>{this.onDisconnect()}}>Log Off</a> :<hr /> }
-
-
+                
                 <Route path='/login' render={(props) => (
                         <Login {...props} key="login" isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
                       )}/>
@@ -124,6 +124,7 @@ class App extends Component {
                 <Route path="/feeds" render={(props) => (
                         <div>
                         <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} postSwitch={this.postSwitch.bind(this)} activeFeed={this.state.activeFeed} />
+                        <FeedForm {...props} key="feedForm" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />
                         <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
                         <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
                         <FeedAddress {...props} key="feedAddress" feedAddresses={this.state.feedAddresses} addFeedAddress={this.addFeedAddress.bind(this)} />
