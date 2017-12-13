@@ -8,6 +8,7 @@ import FeedContainer from './FeedContainer';
 import MainMenu from './MainMenu';
 import PostContainer from './PostContainer';
 import Socket from './socket.js';
+import FeedForm from './feedForm';
 // import Feed from './Feed.js'
 
 
@@ -27,9 +28,10 @@ class App extends Component {
       connected: false,
       loggedin: false
     };
+    this.socket = new Socket();
   }
   componentDidMount(){
-    let socket = this.socket = new Socket();
+    let socket = this.socket
     socket.on('connect', this.onConnect.bind(this));
     socket.on('disconnect', this.onDisconnect.bind(this));
     socket.on('feed add', this.onAddFeed.bind(this));
@@ -101,6 +103,7 @@ class App extends Component {
 
                 <Route path="/feeds" render={(props) => (
                         <div>
+                        <FeedForm {...props} key="feedContainer" isConnected={this.state.loggedin} addFeed={this.addFeed.bind(this)} />
                         <FeedContainer {...props} key="feedContainer" isConnected={this.state.loggedin} feeds={this.state.feeds} activeFeed={this.state.activeFeed} />
                         <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
                         <NewPost {...props} key="newPost" activeFeed={this.state.activeFeed} addPost={this.addPost.bind(this)}/>
