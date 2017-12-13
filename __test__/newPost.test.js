@@ -10,7 +10,7 @@ describe("<NewPost />", () => {
       const renderer = new ShallowRenderer();
       renderer.render(<NewPost />);
       const result = renderer.getRenderOutput();
-      expect(result.props.children.type).toBe('form');
+      expect(result.props.children[1].type).toBe('form');
   });
 
   describe('#onChange', () => {
