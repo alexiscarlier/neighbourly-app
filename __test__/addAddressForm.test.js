@@ -13,7 +13,7 @@ describe("<AddAddressForm />", () => {
 
   test("form contains expected content ", () => {
     const render = renderer.getRenderOutput();
-    const result = render.props.children.props.children
+    const result = render.props.children.props["children"][0]
     expect(result.props.type).toEqual("text");
   });
 
@@ -24,13 +24,5 @@ describe("<AddAddressForm />", () => {
   result.simulate('submit')
   expect(onSubmit).not.toHaveBeenCalled()
   });
+
 });
-
-
-// test('should not be call onSubmit when submitting empty form', () => {
-// const onSubmit = jest.fn();
-// const wrapper = shallow(<FeedForm onSubmit={onSubmit}/>);
-// const result = wrapper.find('input').last();
-// result.simulate('submit')
-// expect(onSubmit).not.toHaveBeenCalled()
-// });
