@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class MainMenu extends Component {
   render () {
     return (
-      // Dropdown Structure
       <nav className="teal">
         <div className="nav-wrapper">
           <a href="/" className="brand-logo left">
