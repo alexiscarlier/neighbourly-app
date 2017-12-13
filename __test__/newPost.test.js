@@ -15,7 +15,8 @@ describe("<NewPost />", () => {
 
   describe('#onChange', () => {
     test('updates state attributes', () => {
-      const wrapper = mount(<NewPost/> );
+      const getActiveFeed = jest.fn()
+      const wrapper = mount(<NewPost getActiveFeed={getActiveFeed}/> );      
       wrapper.find('#title').get(0).props.onChange({target: {name: "title", value: "First post title"}})
       wrapper.find('#text').get(0).props.onChange({target: {name: "text", value: "First post text"}})
       expect(wrapper.state().title).toBe('First post title');
