@@ -9,9 +9,9 @@ class AddAddressForm extends Component {
   }
   onSubmit(e){
     const address = this.state;
-    this.props.addAddress(address);
+    this.props.addFeedAddress(feedAddress);
     this.setState({
-      address: ""
+      feedAddress: ""
     });
     e.preventDefault();
   }
@@ -24,7 +24,7 @@ class AddAddressForm extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit.bind(this)}>
-          <input type="text" name="address" onChange={this.onChange.bind(this)} value={}/>
+          <input type="text" name="feedAddress" onChange={this.onChange.bind(this)} value={}/>
         </form>
       </div>
     )
