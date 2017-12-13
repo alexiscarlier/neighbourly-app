@@ -15,7 +15,7 @@ describe("<AddAddressForm />", () => {
   test("form contains expected content ", () => {
     const render = renderer.getRenderOutput();
     const result = render.props.children.props["children"][0]
-    expect(result.props.type).toEqual("text");
+    expect(result).toEqual(<h1>Add Address</h1>);
   });
 
   test('should not be call onSubmit when submitting empty form', () => {
