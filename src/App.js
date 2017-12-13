@@ -90,7 +90,6 @@ class App extends Component {
                 <MainMenu isConnected={this.state.loggedin}/>
                 {this.state.loggedin ? <a href="/" onClick={()=>{this.onDisconnect()}}>Log Off</a> :<br/> }
 
-
                 <Route path='/login' render={(props) => (
                         <Login {...props} key="login" isConnected={this.state.loggedin} userLogin={this.userLogin.bind(this)} />
                       )}/>
