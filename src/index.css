@@ -1,7 +1,6 @@
 body{
   background-attachment: fixed;
   background-image: url(https://handluggageonly.co.uk/wp-content/uploads/2016/09/IMG_6233.jpg);
-<<<<<<< HEAD
   display: block;
   position: absolute;
   left: 0;
@@ -12,7 +11,6 @@ body{
   background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: overlay;
   background-repeat: no-repeat;
-=======
   text-align: center;
   margin: 0;
   padding: 0;
@@ -20,7 +18,6 @@ body{
   display: flex;
   min-height: 100vh;
   flex-direction: column;
->>>>>>> master
 }
 
 .login-box {
