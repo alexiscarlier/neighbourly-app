@@ -27,7 +27,7 @@ class FeedForm extends Component {
       <div>
         <form onSubmit={this.onSubmit.bind(this)}>
           <input type="text" name="name" onChange={this.onChange.bind(this)} value={this.state.name}/>
-          <input type="submit" name="submit" />
+          <button className="btn waves-effect waves-light red lighten-2" type="submit" value="Submit">Submit<i className="material-icons right">send</i></button>
         </form>
       </div>  
     );

@@ -17,7 +17,9 @@ class Feed extends Component {
 
   render () {
     return (
-      <button type="button" onClick={this.onClick.bind(this)}
+      <button className="btn waves-effect waves-light teal lighten-2 truncate" 
+            style={{"width": "120%"}}
+              type="button" onClick={this.onClick.bind(this)}
       >{this.props.feed.name}</button>
     );
   }
