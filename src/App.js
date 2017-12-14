@@ -51,7 +51,6 @@ class App extends Component {
       loggedin:true
         });
     this.socket.emit('feed subscribe');
-    this.socket.emit('feedAddress subscribe', {feedId});
     this.postSubscribe(feedId);
   }
 
@@ -112,11 +111,14 @@ class App extends Component {
 
   setActiveFeed(feedId) {
     this.socket.emit('post unsubscribe');
+    this.socket.emit('feedAddress unsubscribe');
     this.setState({
       posts: [],
+      feedAddresses: [],
       activeFeed: feedId,
     })
     this.postSubscribe(feedId)
+    this.socket.emit('feedAddress subscribe', {feedId});
   }
   
   addFeedAddress(feedAddress) {
