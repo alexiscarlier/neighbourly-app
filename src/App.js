@@ -171,7 +171,7 @@ class App extends Component {
                     <div className="container ">
                       <div className="row">
                         <div className="col s12 m9 l9 push-m3 push-l3">
-                          <div className="card">
+                          <div className="card ">
                               <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
                             </div>
                           </div>
