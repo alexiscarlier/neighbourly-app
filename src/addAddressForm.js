@@ -38,18 +38,21 @@ class AddAddressForm extends Component {
             placeholder="Enter your address"
           />
           <input
+            type="hidden"            
             id="street_number"
             name="streetNumber"
             placeholder="Number"
             disabled="true"
           />
           <input
+            type="hidden"            
             id="route"
             name="streetName"
             placeholder="Street"
             disabled="true"
           />
           <input
+            type="hidden"            
             id="postal_code"
             name="postcode"
             placeholder="Postcode"
