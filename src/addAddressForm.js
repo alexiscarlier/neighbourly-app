@@ -18,6 +18,7 @@ class AddAddressForm extends Component {
       streetName: document.getElementById("route").value,
       postcode: document.getElementById("postal_code").value
     }
+    document.getElementById("autocomplete").value = ''
     this.props.addFeedAddress(feedAddress);
     e.preventDefault();
   }
@@ -35,7 +36,7 @@ class AddAddressForm extends Component {
             id="autocomplete"
             name="address"
             type="text"
-            placeholder="Enter your address"
+            placeholder="Enter an address"
           />
           <input
             type="hidden"            
