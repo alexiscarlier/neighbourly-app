@@ -77,8 +77,11 @@ body{
 }
 
 .feed-btn{
-  margin-left: -27px;
-  width: 145%
+  margin-left: -30px;
+  width: 145%;
+  background-color: transparent;
+  outline: none;
+  border: none;
 }
 
 .text-area {

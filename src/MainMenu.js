@@ -6,7 +6,7 @@ class MainMenu extends Component {
       <div class="navbar-fixed">
       <nav className="teal">
         <div className="nav-wrapper">
-          <a href="/" className="brand-logo center">
+          <a href="/" className="brand-logo right">
             Neighbour.ly
           </a>
           { !this.props.isConnected ?
