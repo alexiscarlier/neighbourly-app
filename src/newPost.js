@@ -13,21 +13,20 @@ class NewPost extends Component {
   }
 
   onSubmit(e) {
-
     const postContents = this.state;
-    e.preventDefault();
     this.props.addPost(postContents);
     this.setState({
-        name: "",
-        text: "",
+      name: "",
+      text: "",
     });
+    e.preventDefault();
   }
 
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
       feed: {
-        id: this.props.activeFeed
+        id: this.props.getActiveFeed()
       }
     });
   }
@@ -36,7 +35,6 @@ class NewPost extends Component {
     return(
       <div>
         <form id="new-post" onSubmit={this.onSubmit.bind(this)}>
-          <h1>Create Post</h1>
           <input type="hidden" id="feedId" name="feedId" value={this.state.feed.id} />
           <input type="text" id="title" name="name" onChange={this.onChange.bind(this)} value={this.state.name} required placeholder="Enter a title"/>
           <textarea form="new-post" id="text" name="text" onChange={this.onChange.bind(this)} value={this.state.text} required placeholder="Enter your message"></textarea>

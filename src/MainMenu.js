@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class MainMenu extends Component {
   render () {
     return (
+      <div class="navbar-fixed">
       <nav className="teal">
         <div className="nav-wrapper">
           <a href="/" className="brand-logo left">
@@ -29,6 +30,7 @@ class MainMenu extends Component {
           </div>
         </div>
       </nav>
+      </div>
     );
   }
 };

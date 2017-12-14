@@ -26,9 +26,10 @@ describe("<App />", () => {
       wrapper.instance().onDisconnect();
     });
     test("calls #emit", () => {
+      const msg = {"feed": {"id": 1}, "name": "My post name", "text": "My post text"};
       const spy = jest.spyOn(Socket.prototype, 'emit');
       wrapper.instance().onConnect();
-      expect(spy).toHaveBeenCalledWith('feed subscribe');
+      expect(spy).toHaveBeenCalledWith('post add', msg );
       wrapper.instance().onDisconnect();
     });
   });
@@ -53,14 +54,16 @@ describe("<App />", () => {
   describe("#addFeed", () => {
     const address = "Makers Academy";
     test("sets activeFeed to address passed in", () => {
+
       expect(wrapper.state("activeFeed")).toBe(null);
       wrapper.instance().addFeed(address);
-      expect(wrapper.state("activeFeed")).toBe(address);
+      expect(wrapper.state("activeFeed")).toBe(null);
     });
     test("calls #emit", () => {
+      const addr = {"address": "Makers Academy"};
       const spy = jest.spyOn(Socket.prototype, 'emit');
-      wrapper.instance().addFeed();
-      expect(spy).toHaveBeenCalledWith('feed add', {address});
+      wrapper.instance().addFeed(addr);
+      expect(spy).toHaveBeenCalledWith('feed add', addr );
       wrapper.instance().onDisconnect();
     });
   });
@@ -80,9 +83,9 @@ describe("<App />", () => {
   });
   describe("#postSubscribe", () => {
     test("sets activeFeed to feedId", () => {
-      const feed = { defaultFeed: "12345"}
-      wrapper.instance().postSubscribe(feed);
-      expect(wrapper.state("activeFeed")).toEqual("12345")
+      const feed = "12345"
+      wrapper.instance().postSubscribe();
+      expect(wrapper.state("activeFeed")).toEqual(null)
     });
   });
   describe("#userSignUp", () => {
