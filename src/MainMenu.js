@@ -6,7 +6,7 @@ class MainMenu extends Component {
       <div class="navbar-fixed">
       <nav className="teal">
         <div className="nav-wrapper">
-          <a href="/" className="brand-logo left">
+          <a href="/" className="brand-logo center">
             Neighbour.ly
           </a>
           { !this.props.isConnected ?
@@ -21,7 +21,7 @@ class MainMenu extends Component {
             <li><a href="/login">Log Off</a></li>
           </ul>
           }
-          <div className="right">
+          <div className="left">
             <a className="dropdown-button" href="#!" data-activates="dropdown1">
               <i className="material-icons right">
                 menu
