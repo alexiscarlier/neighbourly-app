@@ -85,7 +85,11 @@ class App extends Component {
   }
 
   addFeed(name) {
+    this.setState({
+      feeds: [],      
+    })
     this.socket.emit('feed add', name);
+    this.socket.emit('feed subscribe');    
   }
 
   postSubscribe(feedId) {
@@ -118,11 +122,17 @@ class App extends Component {
       activeFeed: feedId,
     })
     this.postSubscribe(feedId)
-    this.socket.emit('feedAddress subscribe', {feedId});
+    this.socket.emit('feedAddress subscribe', { feedId });
   }
   
   addFeedAddress(feedAddress) {
+    this.socket.emit('feedAddress unsubscribe');    
+    this.setState({
+      feedAddresses: [],
+    })
+    let feedId = this.getActiveFeed()
     this.socket.emit('feedAddress add', feedAddress);
+    this.socket.emit('feedAddress subscribe', { feedId });    
   }
 
   render() {
