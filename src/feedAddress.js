@@ -4,7 +4,10 @@ class FeedAddress extends Component {
 
   render () {
     return (
-      <li>{this.props.feedAddress.address}</li>
+
+      <button className="feed-btn btn waves-effect waves-light teal lighten-2 truncate">
+        {this.props.feedAddress.address.join(' ')}
+      </button>
     );
   }
 

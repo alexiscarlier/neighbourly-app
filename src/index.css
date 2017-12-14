@@ -66,7 +66,8 @@ body{
 .posts{
   max-height: 840px;
   max-height: 840px;
-   margin-bottom: -240px;
+  margin-bottom: -240px;
+  min-height: 300px
   
 }
 
@@ -80,3 +81,7 @@ body{
   width: 145%
 }
 
+.text-area {
+  border: none;
+  outline: none
+}

@@ -51,6 +51,7 @@ class App extends Component {
       loggedin:true
         });
     this.socket.emit('feed subscribe');
+    this.socket.emit('feedAddress subscribe', { feedId });
     this.postSubscribe(feedId);
   }
 

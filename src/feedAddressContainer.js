@@ -18,7 +18,7 @@ class FeedAddressContainer extends Component {
         })
 
           return (
-            <ul>{ feedAddressesList }</ul>
+            <div className="container">{ feedAddressesList }</div>
           )
             
 
