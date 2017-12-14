@@ -1,5 +1,16 @@
-body {
+body{
+  background-attachment: fixed;
   background-image: url(https://handluggageonly.co.uk/wp-content/uploads/2016/09/IMG_6233.jpg);
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
   text-align: center;
   margin: 0;
   padding: 0;
