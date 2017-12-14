@@ -4,7 +4,7 @@ import Post from './Post';
 class PostContainer extends Component {
   render () {
     return (
-      <div>
+      <div className="posts">
         {this.renderPosts(this.props.posts)}
       </div>
     )

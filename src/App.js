@@ -168,11 +168,10 @@ class App extends Component {
                         </div>
                       </div>
                     </ul>
-                    <div className="container">
+                    <div className="container ">
                       <div className="row">
                         <div className="col s12 m9 l9 push-m3 push-l3">
-                          <div className="card card-opaque">
-                            <h5> THIS IS THE POST CONTAINER </h5>
+                          <div className="card">
                               <PostContainer {...props} key="postContainer" posts={this.state.posts}/>
                             </div>
                           </div>
@@ -184,7 +183,7 @@ class App extends Component {
                   <div className="container">
                     <div className="row">
                       <div className="col s12 m9 l9 push-m3 push-l3">
-                          <div className="card card-opaque">
+                          <div className="card post-form">
                             <NewPost {...props} key="newPost" getActiveFeed={this.getActiveFeed.bind(this)} addPost={this.addPost.bind(this)}/>
                           </div> 
                           <div className="footer-copyright">

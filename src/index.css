@@ -47,6 +47,33 @@ body{
   bottom: 0;
   width: 100%;
   /* padding-left: 300px; */
-  background-color: white;
+  background-color: transparent;
   
 }
+
+.card {
+  opacity: 0.8;
+  border-radius: 25px;
+  padding: 10px;
+  overflow-y: scroll; 
+  max-height: 70%;
+  
+  /* margin-bottom: -300px; */
+  
+}
+
+.posts{
+   margin-bottom: -200px;
+  
+}
+
+.post-form{
+  background-color: white;
+  opacity: 1.0;
+}
+
+.feed-btn{
+  margin-left: -27px;
+  width: 145%
+}
+
