@@ -11,6 +11,7 @@ class Feed extends Component {
 
   onClick() {
     console.log(this.state)
+    console.log(this.props.feed.name)
     this.props.setActiveFeed(this.state.feedId)
   }
 
