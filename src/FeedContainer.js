@@ -7,7 +7,7 @@ class FeedContainer extends Component {
 
   render () {
     return (
-      <div>
+      <div className="container">
         {this.props.isConnected ?  (() => {
           var feeds = this.props.feeds
         var feedList = feeds.map((feed, index) => {

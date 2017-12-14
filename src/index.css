@@ -1,6 +1,7 @@
 body{
   background-attachment: fixed;
   background-image: url(https://handluggageonly.co.uk/wp-content/uploads/2016/09/IMG_6233.jpg);
+  background-size: cover;
   display: block;
   position: absolute;
   left: 0;
@@ -47,6 +48,35 @@ body{
   bottom: 0;
   width: 100%;
   /* padding-left: 300px; */
-  background-color: white;
+  background-color: transparent;
   
 }
+
+.card {
+  opacity: 0.8;
+  border-radius: 25px;
+  padding: 10px;
+  overflow-y: scroll; 
+  max-height: 70%;
+  
+  /* margin-bottom: -300px; */
+  
+}
+
+.posts{
+  max-height: 840px;
+  max-height: 840px;
+   margin-bottom: -240px;
+  
+}
+
+.post-form{
+  background-color: white;
+  opacity: 1.0;
+}
+
+.feed-btn{
+  margin-left: -27px;
+  width: 145%
+}
+

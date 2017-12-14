@@ -33,14 +33,16 @@ class NewPost extends Component {
 
   render() {
     return(
-      <div>
-        <form id="new-post" onSubmit={this.onSubmit.bind(this)}>
-          <input type="hidden" id="feedId" name="feedId" value={this.state.feed.id} />
-          <input type="text" id="title" name="name" onChange={this.onChange.bind(this)} value={this.state.name} required placeholder="Enter a title"/>
-          <textarea form="new-post" id="text" name="text" onChange={this.onChange.bind(this)} value={this.state.text} required placeholder="Enter your message"></textarea>
-          <input type="submit" value="Create Post" />
-        </form>
-      </div>
+      <form id="new-post" onSubmit={this.onSubmit.bind(this)}>
+        <div className="row">
+          <div className="col s12">
+              <input type="hidden" id="feedId" name="feedId" value={this.state.feed.id} />
+              <input type="text" id="title" name="name" onChange={this.onChange.bind(this)} value={this.state.name} required placeholder="Enter a title"/>
+              <textarea form="new-post" id="text" name="text" onChange={this.onChange.bind(this)} value={this.state.text} required placeholder="Enter your message"></textarea>
+          </div>
+        </div>
+        <input className="btn waves-effect waves-light red lighten-2" type="submit" value="Create Post"/>
+      </form>    
     )
   }
 };

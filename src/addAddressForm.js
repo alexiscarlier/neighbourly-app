@@ -55,7 +55,8 @@ class AddAddressForm extends Component {
             placeholder="Postcode"
             disabled="true"
           />
-            <input type="submit" value="Submit" />
+        <button className="btn waves-effect waves-light red lighten-2" type="submit" value="Submit">Submit<i className="material-icons right">send</i></button>
+
         </form>
       </div>
     )
